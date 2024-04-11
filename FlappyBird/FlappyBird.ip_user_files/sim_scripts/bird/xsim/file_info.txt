@@ -1,0 +1,1 @@
+bird_sim_netlist.vhdl,vhdl,xil_defaultlib,../../../../FlappyBird.gen/sources_1/ip/bird/bird_sim_netlist.vhdl,

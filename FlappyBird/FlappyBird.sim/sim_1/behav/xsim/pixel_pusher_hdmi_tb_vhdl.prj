@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../FBFiles/debounce.vhd" \
+"../../../../../FBFiles/pixel_pusher_hdmi.vhd" \
+"../../../../FlappyBird.srcs/sim_1/new/pixel_pusher_hdmi_tb.vhd" \
+
+# Do not sort compile order
+nosort
