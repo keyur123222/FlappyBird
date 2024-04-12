@@ -1,6 +1,4 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/keyur/Documents/Vivado/FBFiles/debounce.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'debounce'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/keyur/Documents/Vivado/FBFiles/pixel_pusher_hdmi.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'pixel_pusher_hdmi'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sim_1/new/pixel_pusher_hdmi_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'pixel_pusher_hdmi_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/pipeGen.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pipeGen'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sim_1/new/pipeGen_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pipegen_tb'

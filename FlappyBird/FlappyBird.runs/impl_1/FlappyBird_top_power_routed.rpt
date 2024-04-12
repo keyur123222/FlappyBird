@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Fri Apr 12 11:20:50 2024
+| Date             : Fri Apr 12 18:06:31 2024
 | Host             : Key running 64-bit major release  (build 9200)
 | Command          : report_power -file FlappyBird_top_power_routed.rpt -pb FlappyBird_top_power_summary_routed.pb -rpx FlappyBird_top_power_routed.rpx
 | Design           : FlappyBird_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.240        |
+| Total On-Chip Power (W)  | 0.239        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.142        |
+| Dynamic (W)              | 0.141        |
 | Device Static (W)        | 0.098        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 82.2         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.006 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |     1416 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      597 |     17600 |            3.39 |
-|   CARRY4       |    <0.001 |       41 |      4400 |            0.93 |
-|   Register     |    <0.001 |      337 |     35200 |            0.96 |
+| Slice Logic    |     0.001 |     1623 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      666 |     17600 |            3.78 |
+|   CARRY4       |    <0.001 |       63 |      4400 |            1.43 |
+|   Register     |    <0.001 |      417 |     35200 |            1.18 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   F7/F8 Muxes  |    <0.001 |       64 |     17600 |            0.36 |
-|   Others       |     0.000 |      265 |       --- |             --- |
-| Signals        |    <0.001 |     1326 |       --- |             --- |
-| Block RAM      |     0.002 |       57 |        60 |           95.00 |
+|   Others       |     0.000 |      269 |       --- |             --- |
+| Signals        |     0.001 |     1479 |       --- |             --- |
+| Block RAM      |    <0.001 |       57 |        60 |           95.00 |
 | I/O            |     0.133 |       13 |       100 |           13.00 |
 | Static Power   |     0.098 |          |           |                 |
-| Total          |     0.240 |          |           |                 |
+| Total          |     0.239 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.015 |       0.010 |      0.005 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.014 |       0.009 |      0.005 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.006 |       0.000 |      0.006 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.041 |       0.040 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -150,18 +150,17 @@ Table of Contents
 +--------------------------------------+-----------+
 | Name                                 | Power (W) |
 +--------------------------------------+-----------+
-| FlappyBird_top                       |     0.142 |
-|   u2                                 |     0.003 |
-|     U0                               |     0.003 |
-|       inst_blk_mem_gen               |     0.003 |
-|   u3                                 |     0.002 |
+| FlappyBird_top                       |     0.141 |
+|   u2                                 |     0.002 |
+|     U0                               |     0.002 |
+|       inst_blk_mem_gen               |     0.002 |
+|   u3                                 |     0.003 |
 |   u5                                 |     0.133 |
 |     U0                               |     0.133 |
 |       ClockSerializer                |     0.033 |
 |       DataEncoders[0].DataSerializer |     0.033 |
 |       DataEncoders[1].DataSerializer |     0.033 |
 |       DataEncoders[2].DataSerializer |     0.033 |
-|   u6                                 |     0.001 |
 +--------------------------------------+-----------+
 
 

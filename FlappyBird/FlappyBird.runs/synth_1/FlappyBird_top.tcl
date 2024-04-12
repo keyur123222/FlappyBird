@@ -70,6 +70,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
+set_param chipscope.maxJobs 4
+set_param synth.incrementalSynthesisCache C:/Users/keyur/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-16092-Key/incrSyn
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -96,11 +102,10 @@ read_vhdl -library xil_defaultlib {
   C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/birdPixels.vhd
   C:/Users/keyur/Documents/Vivado/FBFiles/clock_div.vhd
   C:/Users/keyur/Documents/Vivado/FBFiles/debounce.vhd
+  C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/pipeGen.vhd
   C:/Users/keyur/Documents/Vivado/FBFiles/pixel_pusher_hdmi.vhd
   C:/Users/keyur/Documents/Vivado/FBFiles/vga_ctrl.vhd
   C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/FlappyBird_top.vhd
-  C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/Jump.vhd
-  C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/startMenuPixels.vhd
 }
 read_ip -quiet C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/ip/picture/picture.xci
 set_property used_in_implementation false [get_files -all c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.gen/sources_1/ip/picture/picture_ooc.xdc]

@@ -23,9 +23,11 @@ entity pixel_pusher_hdmi is
         led_ind: out std_logic:= '0';
 
         birdPixel: in std_logic_vector(7 downto 0);
-        addr2: out integer
-
-
+        addr2: out integer;
+        
+        pipeY1, pipeY2: in integer
+        
+      
     );
 end pixel_pusher_hdmi;
 
@@ -35,14 +37,21 @@ architecture Behavioral of pixel_pusher_hdmi is
 
     signal y1: integer range 0 to 480:= 230;
     signal y2: integer range 0 to 480:= 270;
+    
+    signal h1: integer range 0 to 640:= 640;
+    signal h2: integer range 0 to 710:= 710;
 
     signal timer: integer range 0 to 125000000:= 0; -- (1 second)
     signal tempCounter: integer range 0 to 125000000:= 0; -- 1 seconds;
+    signal pipeMoveTimer: integer range 0 to 12500000:= 0; -- 0.5 seconds in 25Mhz
+    signal pipeGenTimer: integer range 0 to 625000000:= 0; -- 5 seconds
 
     type state is (start, playing, gameover);
     signal currentState: state:= start;
 
     signal tempBoolean: boolean:= FALSE;
+    
+   
 
 
 begin
@@ -56,7 +65,7 @@ begin
                 when start =>
                     
                     if clk_enable = '1' then
-                        if vid = '1' and hcount < 480 then -- hcount < 480           
+                        if vid = '1' and hcount >= 80 and hcount < 560 then -- hcount < 480           
                             R <= pixel(7 downto 5) & "00000"; -- Resize to 8 bits
                             G <= pixel(4 downto 2) & "00000"; -- Resize to 8 bits
                             B <= pixel(1 downto 0) & "000000"; -- Resize to 8 bits
@@ -176,6 +185,33 @@ begin
                         if vs = '0' then
                             internal_addr2 <= 0; -- Reset on VS pulse
                         end if;
+                        
+                        
+                        if pipeMoveTimer = 416666 then
+                            h1 <= h1 - 1;
+                            h2 <= h2 - 1;
+                            pipeMoveTimer <= 0;
+                        else                   
+                            pipeMoveTimer <= pipeMoveTimer + 1;
+                        end if;
+                        
+                        
+                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= 0 and vcount < pipeY1) then -- pipe top
+                            R <= "000" & "00000";  --pipe top
+                            G <= "100" & "00000";  --pipe top 
+                            B <= "00" & "000000";  --pipe top 
+                        end if;
+                        
+                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= pipeY2 and vcount < 410) then -- pipe top
+                            R <= "000" & "00000";  --pipe top
+                            G <= "100" & "00000";  --pipe top 
+                            B <= "00" & "000000";  --pipe top 
+                        end if;
+                        
+                        
+                        
+                        
+                        
 
                     end if;
 
