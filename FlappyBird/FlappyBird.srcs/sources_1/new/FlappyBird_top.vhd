@@ -21,20 +21,24 @@ architecture Behavioral of FlappyBird_top is
 
     component pixel_pusher_hdmi is
         port (
-        clk         : in  STD_LOGIC;
-        clk_enable  : in  STD_LOGIC;
-        vs          : in  STD_LOGIC;
-        pixel       : in  STD_LOGIC_VECTOR(7 downto 0);
-        hcount      : in  STD_LOGIC_VECTOR(9 downto 0);
-        vcount      : in std_logic_vector(9 downto 0);
-        vid         : in  STD_LOGIC;
-        R           : out STD_LOGIC_VECTOR(7 downto 0);
-        G           : out STD_LOGIC_VECTOR(7 downto 0);
-        B           : out STD_LOGIC_VECTOR(7 downto 0);
-        addr        : out STD_LOGIC_VECTOR(17 downto 0);
+            clk         : in  STD_LOGIC;
+            clk_enable  : in  STD_LOGIC;
+            vs          : in  STD_LOGIC;
+            pixel       : in  STD_LOGIC_VECTOR(7 downto 0);
+            hcount      : in  STD_LOGIC_VECTOR(9 downto 0);
+            vcount      : in std_logic_vector(9 downto 0);
+            vid         : in  STD_LOGIC;
+            R           : out STD_LOGIC_VECTOR(7 downto 0);
+            G           : out STD_LOGIC_VECTOR(7 downto 0);
+            B           : out STD_LOGIC_VECTOR(7 downto 0);
+            addr        : out STD_LOGIC_VECTOR(17 downto 0);
 
-        btn_up, start_btn: in std_logic;
-        led_ind: out std_logic:= '0'
+            btn_up, start_btn: in std_logic;
+            led_ind: out std_logic:= '0';
+
+            birdPixel: in std_logic_vector(7 downto 0);
+            addr2: out integer
+
         );
     end component;
 
@@ -93,11 +97,20 @@ architecture Behavioral of FlappyBird_top is
         );
     end component;
 
+    component birdPixels is
+        port (
+            clk: in std_logic;
+            addr: in integer;
+            pixel_out: out std_logic_vector(7 downto 0)
+
+        );
+    end component;
+
 
 
     signal div_out, vs_out, hs_out, vid_out: std_logic;
     signal addr_out: std_logic_vector (17 downto 0);
-    signal pixel_out: std_logic_vector(7 downto 0);
+    signal pixel_out, birdPixel_out : std_logic_vector(7 downto 0);
     signal hcount_out, vcount_out: std_logic_vector(9 downto 0);
     signal rgb24: std_logic_vector(23 downto 0);
     signal vga_r, vga_g, vga_b: std_logic_vector(7 downto 0);
@@ -107,6 +120,8 @@ architecture Behavioral of FlappyBird_top is
     signal dbnc1, dbnc2, ledind: std_logic;
 
     signal unused: std_logic;
+    signal addr2_out: integer;
+
 
 begin
 
@@ -124,6 +139,7 @@ begin
         );
 
 
+
     u3: pixel_pusher_hdmi
         port map(
             clk => clk,
@@ -139,7 +155,9 @@ begin
             addr => addr_out,
             btn_up => dbnc1,
             led_ind => ledind,
-            start_btn => dbnc2
+            start_btn => dbnc2,
+            birdPixel => birdPixel_out,
+            addr2 => addr2_out
 
         );
 
@@ -181,6 +199,14 @@ begin
             clk => clk,
             button => btn_start,
             debounced_button => dbnc2
+        );
+        
+      u6: birdPixels  
+        port map(
+            clk => clk,
+            addr => addr2_out,
+            pixel_out => birdPixel_out
+        
         );
 
 

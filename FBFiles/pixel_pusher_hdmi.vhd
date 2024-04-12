@@ -18,8 +18,12 @@ entity pixel_pusher_hdmi is
         B           : out STD_LOGIC_VECTOR(7 downto 0);
         addr        : out STD_LOGIC_VECTOR(17 downto 0);
 
+
         btn_up, start_btn: in std_logic;
-        led_ind: out std_logic:= '0'
+        led_ind: out std_logic:= '0';
+
+        birdPixel: in std_logic_vector(7 downto 0);
+        addr2: out integer
 
 
     );
@@ -27,10 +31,10 @@ end pixel_pusher_hdmi;
 
 architecture Behavioral of pixel_pusher_hdmi is
     signal internal_addr : unsigned(17 downto 0) := (others => '0');
+    signal internal_addr2: integer range 0 to 1999:= 0;
 
-
-    signal y1: integer range 0 to 480:= 240;
-    signal y2: integer range 0 to 480:= 250;
+    signal y1: integer range 0 to 480:= 230;
+    signal y2: integer range 0 to 480:= 270;
 
     signal timer: integer range 0 to 125000000:= 0; -- (1 second)
     signal tempCounter: integer range 0 to 125000000:= 0; -- 1 seconds;
@@ -50,7 +54,7 @@ begin
             case currentState is
 
                 when start =>
-
+                    
                     if clk_enable = '1' then
                         if vid = '1' and hcount < 480 then -- hcount < 480           
                             R <= pixel(7 downto 5) & "00000"; -- Resize to 8 bits
@@ -97,9 +101,9 @@ begin
 
                     if clk_enable = '1' then
                         if vid = '1' and hcount < 640 then -- hcount < 480     -- background    
-                            R <= "011" & "00000"; -- blueish
-                            G <= "101" & "00000"; -- blueish
-                            B <= "11" & "000000"; -- blueish
+                            R <= "011" & "00000"; -- blueish sky
+                            G <= "101" & "00000"; -- blueish sky
+                            B <= "11" & "000000"; -- blueish sky
                         else
                             R <= (others => '0');
                             G <= (others => '0');
@@ -157,11 +161,22 @@ begin
                             B <= "01" & "000000";  --earth
                         end if;
 
-                        if vid = '1' and (hcount >= 220 and hcount < 230 and vcount >= y1 and vcount < y2) then -- bird
-                            R <= "111" & "00000"; -- yellow
-                            G <= "111" & "00000"; -- yellow
-                            B <= "00" & "000000"; -- yellow
+                        --                        if vid = '1' and (hcount >= 220 and hcount < 230 and vcount >= y1 and vcount < y2) then -- bird
+                        --                            R <= "111" & "00000"; -- yellow
+                        --                            G <= "111" & "00000"; -- yellow
+                        --                            B <= "00" & "000000"; -- yellow
+                        --                        end if;
+
+                        if vid = '1' and (hcount >= 200 and hcount < 250 and vcount >= y1 and vcount < y2) then -- bird
+                            R <= birdPixel(7 downto 5) & "00000"; -- 
+                            G <= birdPixel(4 downto 2) & "00000"; -- 
+                            B <= birdPixel(1 downto 0) & "000000"; -- 
+                            internal_addr2 <= internal_addr2 + 1;
                         end if;
+                        if vs = '0' then
+                            internal_addr2 <= 0; -- Reset on VS pulse
+                        end if;
+
                     end if;
 
 
@@ -184,8 +199,8 @@ begin
                     if start_btn = '1' then
                         tempBoolean <= TRUE;
                     elsif btn_up = '1' and tempBoolean = TRUE then
-                        y1 <= 240; --reset bird position
-                        y2 <= 250;
+                        y1 <= 230; --reset bird position
+                        y2 <= 270;
                         currentState <= start;
                         tempBoolean <= FALSE;
                     end if;
@@ -201,5 +216,5 @@ begin
     end process;
 
     addr <= std_logic_vector(internal_addr);
-
+    addr2 <= internal_addr2;
 end Behavioral;

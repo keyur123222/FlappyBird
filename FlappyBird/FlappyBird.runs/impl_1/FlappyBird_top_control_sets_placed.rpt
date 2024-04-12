@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Apr 10 17:30:07 2024
+| Date         : Fri Apr 12 11:20:34 2024
 | Host         : Key running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file FlappyBird_top_control_sets_placed.rpt
 | Design       : FlappyBird_top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    17 |
-|    Minimum number of control sets                        |    17 |
+| Total control sets                                       |    19 |
+|    Minimum number of control sets                        |    19 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    90 |
+| Unused register locations in slices containing registers |    95 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,13 +39,13 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    17 |
-| >= 0 to < 4        |     3 |
+| Total control sets |    19 |
+| >= 0 to < 4        |     4 |
 | >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     0 |
+| >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     3 |
-| >= 10 to < 12      |     1 |
-| >= 12 to < 14      |     1 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
 | >= 16              |     8 |
 +--------------------+-------+
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             123 |           81 |
+| No           | No                    | No                     |             125 |           87 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              42 |           21 |
-| Yes          | No                    | No                     |              24 |           16 |
+| No           | Yes                   | No                     |              42 |           24 |
+| Yes          | No                    | No                     |              28 |           21 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             137 |           40 |
+| Yes          | Yes                   | No                     |             142 |           44 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,23 +73,25 @@ Table of Contents
 +------------------+------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
 |   Clock Signal   |         Enable Signal        |                       Set/Reset Signal                      | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------+------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG   | u3/tempCounter[26]_i_2_n_0   |                                                             |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG   | u3/led_ind_i_1_n_0           |                                                             |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG   | u4/hcounter                  |                                                             |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG   | u3/y1[8]_i_1_n_0             | u3/y1[7]_i_1_n_0                                            |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG   | btn_startz/counter           |                                                             |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG   | u3/y1[8]_i_1_n_0             | u3/y1[7]_i_1_n_0                                            |                2 |              3 |         1.50 |
+|  clk_IBUF_BUFG   | u4/internal_addr2            |                                                             |                3 |              5 |         1.67 |
+|  clk_IBUF_BUFG   | u4/internal_addr2            | u4/vcounter_reg[9]_3                                        |                2 |              6 |         3.00 |
 |  clk_IBUF_BUFG   | u4/hcounter                  | u4/vcounter                                                 |                4 |              9 |         2.25 |
-|  clk_IBUF_BUFG   | u1/div_out_BUFG              |                                                             |                8 |              9 |         1.12 |
+|  clk_IBUF_BUFG   | u1/div_out_BUFG              |                                                             |                9 |              9 |         1.00 |
 |  clk_IBUF_BUFG   | u1/div_out_BUFG              | u4/hcounter                                                 |                3 |              9 |         3.00 |
-|  u1/div_out_BUFG |                              | u5/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1__1_n_0 |                3 |             10 |         3.33 |
-|  clk_IBUF_BUFG   | u3/y1[8]_i_1_n_0             |                                                             |                5 |             12 |         2.40 |
-|  clk_IBUF_BUFG   | u3/internal_addr[17]_i_2_n_0 | u3/internal_addr[17]_i_1_n_0                                |                3 |             18 |         6.00 |
-|  clk_IBUF_BUFG   | btn_startz/counter           | btn_startz/counter[21]_i_1_n_0                              |                6 |             22 |         3.67 |
+|  u1/div_out_BUFG |                              | u5/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1__1_n_0 |                5 |             10 |         2.00 |
+|  clk_IBUF_BUFG   | u3/y1[8]_i_1_n_0             |                                                             |                6 |             11 |         1.83 |
+|  clk_IBUF_BUFG   | u3/internal_addr[17]_i_2_n_0 | u3/internal_addr[17]_i_1_n_0                                |                4 |             18 |         4.50 |
+|  clk_IBUF_BUFG   | btn_startz/counter           | btn_startz/counter[21]_i_1_n_0                              |                6 |             21 |         3.50 |
 |  clk_IBUF_BUFG   | btn_up/counter               | btn_up/counter[21]_i_1_n_0                                  |                7 |             22 |         3.14 |
-|  clk_IBUF_BUFG   | u3/tempCounter[26]_i_2_n_0   | u3/tempCounter[26]_i_1_n_0                                  |                7 |             26 |         3.71 |
-|  clk_IBUF_BUFG   | u3/timer                     | u3/timer[26]_i_1_n_0                                        |                7 |             27 |         3.86 |
-|  u1/div_out_BUFG |                              | u5/U0/DataEncoders[0].DataEncoder/SR[0]                     |               18 |             32 |         1.78 |
-|  u1/div_out_BUFG |                              |                                                             |               27 |             49 |         1.81 |
-|  clk_IBUF_BUFG   |                              |                                                             |               54 |             74 |         1.37 |
+|  clk_IBUF_BUFG   | u3/timer                     | u3/timer[26]_i_1_n_0                                        |                8 |             27 |         3.38 |
+|  clk_IBUF_BUFG   | u4/tempCounter               | u3/tempCounter[26]_i_1_n_0                                  |                8 |             27 |         3.38 |
+|  u1/div_out_BUFG |                              | u5/U0/DataEncoders[0].DataEncoder/SR[0]                     |               19 |             32 |         1.68 |
+|  u1/div_out_BUFG |                              |                                                             |               26 |             49 |         1.88 |
+|  clk_IBUF_BUFG   |                              |                                                             |               61 |             76 |         1.25 |
 +------------------+------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1712784518">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1712935149">
   <File Type="ROUTE-PWR" Name="FlappyBird_top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="FlappyBird_top.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="FlappyBird_top_power_summary_routed.pb"/>
@@ -93,6 +93,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/birdPixels.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../FBFiles/clock_div.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -125,12 +131,23 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/Jump.vhd">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../FBFiles/StartMenuReal.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../FBFiles/flappybird.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/startMenuPixels.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
