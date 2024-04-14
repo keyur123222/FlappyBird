@@ -23,11 +23,10 @@ entity pixel_pusher_hdmi is
         led_ind: out std_logic:= '0';
 
         birdPixel: in std_logic_vector(7 downto 0);
-        addr2: out integer;
-        
-        pipeY1, pipeY2: in integer
-        
-      
+        addr2: out integer
+
+
+
     );
 end pixel_pusher_hdmi;
 
@@ -37,9 +36,12 @@ architecture Behavioral of pixel_pusher_hdmi is
 
     signal y1: integer range 0 to 480:= 230;
     signal y2: integer range 0 to 480:= 270;
-    
-    signal h1: integer range 0 to 640:= 640;
+
+    signal h1: integer range -70 to 640:= 640;
     signal h2: integer range 0 to 710:= 710;
+    
+    signal birdx1: integer:= 200;
+    signal birdx2: integer:= 250;
 
     signal timer: integer range 0 to 125000000:= 0; -- (1 second)
     signal tempCounter: integer range 0 to 125000000:= 0; -- 1 seconds;
@@ -50,8 +52,10 @@ architecture Behavioral of pixel_pusher_hdmi is
     signal currentState: state:= start;
 
     signal tempBoolean: boolean:= FALSE;
-    
-   
+
+    signal pipeGenCounter: std_logic_vector(3 downto 0);
+
+    signal tempy1, tempy2: integer;
 
 
 begin
@@ -63,7 +67,7 @@ begin
             case currentState is
 
                 when start =>
-                    
+
                     if clk_enable = '1' then
                         if vid = '1' and hcount >= 80 and hcount < 560 then -- hcount < 480           
                             R <= pixel(7 downto 5) & "00000"; -- Resize to 8 bits
@@ -90,21 +94,33 @@ begin
 
                 when playing =>
                     if btn_up = '1' then -- jump
-                        y1 <= y1 - 10;
-                        y2 <= y2 - 10;
+                        y1 <= y1 - 15;
+                        y2 <= y2 - 15;
                         led_ind <= '1';
                     else
                         timer <= timer + 1;
-                        if timer = 31250000 then --0.5 second
+                        if timer = 900000 then -- falling speed second
                             led_ind <= '0';
-                            y1 <= y1 + 10;
-                            y2 <= y2 + 10;
+                            y1 <= y1 + 1;
+                            y2 <= y2 + 1;
                             timer <= 0;
                         end if;
                     end if;
+                    
+                    --object collison
                     if y2 >= 410 or y1 < 5 then
                         currentState <= gameover;
                     end if;
+                    
+                    if (birdx1 < h2) then
+                        
+                        if (birdx2 >= h1 and y1 < tempy1) then --top pipe collison
+                            currentState <= gameover;
+                        elsif (birdx2 >= h1 and y2 > tempy2 ) then -- bottom pipe collison
+                            currentState <= gameover;
+                        end if;
+                    end if;
+                   
 
 
 
@@ -176,7 +192,7 @@ begin
                         --                            B <= "00" & "000000"; -- yellow
                         --                        end if;
 
-                        if vid = '1' and (hcount >= 200 and hcount < 250 and vcount >= y1 and vcount < y2) then -- bird
+                        if vid = '1' and (hcount >= birdx1 and hcount < birdx2 and vcount >= y1 and vcount < y2) then -- bird
                             R <= birdPixel(7 downto 5) & "00000"; -- 
                             G <= birdPixel(4 downto 2) & "00000"; -- 
                             B <= birdPixel(1 downto 0) & "000000"; -- 
@@ -185,40 +201,94 @@ begin
                         if vs = '0' then
                             internal_addr2 <= 0; -- Reset on VS pulse
                         end if;
-                        
-                        
-                        if pipeMoveTimer = 416666 then
+
+
+                        if pipeMoveTimer = 410000 then
                             h1 <= h1 - 1;
                             h2 <= h2 - 1;
                             pipeMoveTimer <= 0;
-                        else                   
-                            pipeMoveTimer <= pipeMoveTimer + 1;
+                        else
+                            pipeMoveTimer <= pipeMoveTimer + 4;
                         end if;
-                        
-                        
-                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= 0 and vcount < pipeY1) then -- pipe top
+
+                        if h1 = -70 then
+                            h1 <= 640;
+                            h2 <= 710;
+                            pipeGenCounter <= pipeGenCounter + 1;
+                        end if;
+
+                        if pipeGenCounter <= "0000" then
+                            tempy1 <= 190;
+                            tempy2 <= 190 + 120;
+                        elsif pipeGenCounter <= "0001" then
+                            tempy1 <= 30;
+                            tempy2 <= 30 + 120;
+                        elsif pipeGenCounter <= "0010" then
+                            tempy1 <= 170;
+                            tempy2 <= 170 + 120;
+                        elsif pipeGenCounter <= "0011" then
+                            tempy1 <= 260;
+                            tempy2 <= 260 + 120;
+                        elsif pipeGenCounter <= "0100" then
+                            tempy1 <= 180;
+                            tempy2 <= 180 + 120;
+                        elsif pipeGenCounter <= "0101" then
+                            tempy1 <= 200;
+                            tempy2 <= 200 + 120;
+                        elsif pipeGenCounter <= "0110" then
+                            tempy1 <= 290;
+                            tempy2 <= 290 + 120;
+                        elsif pipeGenCounter <= "0111" then
+                            tempy1 <= 80;
+                            tempy2 <= 80 + 120;
+                        elsif pipeGenCounter <= "1000" then
+                            tempy1 <= 20;
+                            tempy2 <= 20 + 120;
+                        elsif pipeGenCounter <= "1001" then
+                            tempy1 <= 70;
+                            tempy2 <= 70 + 120;
+                        elsif pipeGenCounter <= "1010" then
+                            tempy1 <= 0;
+                            tempy2 <= 0 + 120;
+                        elsif pipeGenCounter <= "1011" then
+                            tempy1 <= 40;
+                            tempy2 <= 40 + 120;
+                        elsif pipeGenCounter <= "1100" then
+                            tempy1 <= 260;
+                            tempy2 <= 260 + 120;
+                        elsif pipeGenCounter <= "1101" then
+                            tempy1 <= 150;
+                            tempy2 <= 150 + 120;
+                        elsif pipeGenCounter <= "1110" then
+                            tempy1 <= 270;
+                            tempy2 <= 270 + 120;
+                        elsif pipeGenCounter <= "1111" then
+                            tempy1 <= 15;
+                            tempy2 <= 15 + 120;
+                        end if;
+
+                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= 0 and vcount < tempy1) then -- pipe top
                             R <= "000" & "00000";  --pipe top
                             G <= "100" & "00000";  --pipe top 
                             B <= "00" & "000000";  --pipe top 
                         end if;
-                        
-                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= pipeY2 and vcount < 410) then -- pipe top
-                            R <= "000" & "00000";  --pipe top
-                            G <= "100" & "00000";  --pipe top 
-                            B <= "00" & "000000";  --pipe top 
+
+                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= tempy2 and vcount < 410) then -- pipe top
+                            R <= "000" & "00000"; --pipe bot
+                            G <= "100" & "00000"; --pipe bot
+                            B <= "00" & "000000"; --pipe bot
                         end if;
-                        
-                        
-                        
-                        
-                        
+
+
+
+
 
                     end if;
 
 
                 when gameover =>
                     if clk_enable = '1' then
-                        if vid = '1' and hcount < 680 then -- hcount < 480           
+                        if vid = '1' and hcount < 640 then -- hcount < 480           
                             R <= "111" & "00000"; -- Resize to 8 bits
                             G <= "000" & "00000"; -- Resize to 8 bits
                             B <= "00" & "000000"; -- Resize to 8 bits 
@@ -237,6 +307,8 @@ begin
                     elsif btn_up = '1' and tempBoolean = TRUE then
                         y1 <= 230; --reset bird position
                         y2 <= 270;
+                        h1 <= 640; --reset pipe position
+                        h2 <= 710;
                         currentState <= start;
                         tempBoolean <= FALSE;
                     end if;

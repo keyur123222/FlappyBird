@@ -1,1 +1,1 @@
---incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "pipeGen_tb_behav" "xil_defaultlib.pipeGen_tb" -log "elaborate.log" 
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "pipegen_tb_behav" "xil_defaultlib.pipegen_tb" -log "elaborate.log" 

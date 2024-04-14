@@ -38,9 +38,7 @@ architecture Behavioral of FlappyBird_top is
             led_ind: out std_logic:= '0';
 
             birdPixel: in std_logic_vector(7 downto 0);
-            addr2: out integer;
-
-            pipeY1, pipeY2: in integer
+            addr2: out integer
 
         );
     end component;
@@ -109,15 +107,13 @@ architecture Behavioral of FlappyBird_top is
         );
     end component;
 
-    component pipeGen is
-        port (
-            clk : in STD_LOGIC;
-            --            rst : in STD_LOGIC;
-            outp : out STD_LOGIC_VECTOR (3 downto 0);
-
-            y1, y2: out integer range 50 to 230
-        );
-    end component;
+--    component pipeGen is
+--        port (
+--            clk : in STD_LOGIC;
+--            pipeGenVector: in std_logic_vector(3 downto 0);
+--            y1, y2: out integer
+--        );
+--    end component;
 
 
 
@@ -135,9 +131,9 @@ architecture Behavioral of FlappyBird_top is
     signal unused: std_logic;
     signal addr2_out: integer;
 
-    signal outp_out: STD_LOGIC_VECTOR (3 downto 0);
+    signal pipeGenCounterOut_signal: STD_LOGIC_VECTOR (3 downto 0);
 
-    signal y1_out, y2_out: integer range 50 to 480;
+    signal y1_out, y2_out: integer;
 
 
 begin
@@ -174,10 +170,8 @@ begin
             led_ind => ledind,
             start_btn => dbnc2,
             birdPixel => birdPixel_out,
-            addr2 => addr2_out,
-            pipeY1 => y1_out, 
-            pipeY2 => y2_out
-            
+            addr2 => addr2_out
+
 
         );
 
@@ -229,14 +223,14 @@ begin
 
         );
 
-    pipe: pipeGen
-        port map(
-            clk => clk,
-            outp => outp_out,
-            y1 => y1_out,
-            y2 => y2_out
+--    pipe: pipeGen
+--        port map(
+--            clk => div_out,
+--            pipeGenVector => pipeGenCounterOut_signal, 
+--            y1 => y1_out,
+--            y2 => y2_out
 
-        );
+--        );
 
 
     --    led <= '1' when btn = '1' else '0';

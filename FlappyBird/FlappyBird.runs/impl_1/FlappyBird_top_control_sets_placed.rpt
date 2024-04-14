@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Apr 12 18:06:13 2024
-| Host         : Key running 64-bit major release  (build 9200)
+| Date         : Sat Apr 13 23:55:13 2024
+| Host         : KeyComputadora running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file FlappyBird_top_control_sets_placed.rpt
 | Design       : FlappyBird_top
 | Device       : xc7z010
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    20 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    79 |
+| Unused register locations in slices containing registers |    92 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -58,41 +58,41 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             125 |           83 |
+| No           | No                    | No                     |             124 |           84 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              72 |           27 |
-| Yes          | No                    | No                     |              63 |           30 |
+| No           | Yes                   | No                     |              42 |           22 |
+| Yes          | No                    | No                     |              81 |           38 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             157 |           45 |
+| Yes          | Yes                   | No                     |             157 |           50 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+------------------+-------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
-|   Clock Signal   |         Enable Signal         |                       Set/Reset Signal                      | Slice Load Count | Bel Load Count | Bels / Slice |
-+------------------+-------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG   | u4/hcounter                   |                                                             |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG   | u3/led_ind_i_1_n_0            |                                                             |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG   | pipe/PipeGenTimer[30]_i_1_n_0 |                                                             |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG   | u1/div_out_BUFG               | u4/hcounter                                                 |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG   | u4/hcounter                   | u4/vcounter                                                 |                3 |              9 |         3.00 |
-|  clk_IBUF_BUFG   | u1/div_out_BUFG               |                                                             |                9 |             10 |         1.11 |
-|  u1/div_out_BUFG |                               | u5/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1__1_n_0 |                3 |             10 |         3.33 |
-|  clk_IBUF_BUFG   | u4/E[0]                       |                                                             |                4 |             11 |         2.75 |
-|  clk_IBUF_BUFG   | u3/y1[8]_i_1_n_0              |                                                             |                9 |             16 |         1.78 |
-|  clk_IBUF_BUFG   | u3/internal_addr[17]_i_2_n_0  | u4/div_reg                                                  |                3 |             18 |         6.00 |
-|  clk_IBUF_BUFG   | u3/h1                         |                                                             |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG   | btn_startz/counter            | btn_startz/counter[21]_i_1_n_0                              |                6 |             22 |         3.67 |
-|  clk_IBUF_BUFG   | btn_up/counter                | btn_up/counter[21]_i_1__0_n_0                               |                7 |             22 |         3.14 |
-|  clk_IBUF_BUFG   | u1/pipeMoveTimer              | u3/pipeMoveTimer[23]_i_1_n_0                                |                7 |             24 |         3.43 |
-|  clk_IBUF_BUFG   | u4/tempCounter                | u3/tempCounter[26]_i_1_n_0                                  |                8 |             27 |         3.38 |
-|  clk_IBUF_BUFG   | u3/timer                      | u3/timer[26]_i_1_n_0                                        |                8 |             27 |         3.38 |
-|  clk_IBUF_BUFG   |                               | pipe/PipeGenTimer[30]_i_1_n_0                               |                8 |             30 |         3.75 |
-|  u1/div_out_BUFG |                               | u5/U0/DataEncoders[0].DataEncoder/SR[0]                     |               16 |             32 |         2.00 |
-|  u1/div_out_BUFG |                               |                                                             |               25 |             49 |         1.96 |
-|  clk_IBUF_BUFG   |                               |                                                             |               58 |             76 |         1.31 |
-+------------------+-------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
++------------------+------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
+|   Clock Signal   |         Enable Signal        |                       Set/Reset Signal                      | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG   | u3/led_ind_i_1_n_0           |                                                             |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG   | u3/timer                     |                                                             |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG   | u3/pipeGenCounter[3]_i_1_n_0 |                                                             |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG   | u1/div_out_BUFG              |                                                             |                8 |              9 |         1.12 |
+|  clk_IBUF_BUFG   | u1/div_out_BUFG              | u4/hcounter                                                 |                5 |              9 |         1.80 |
+|  clk_IBUF_BUFG   | u4/hcounter                  | u4/vcounter                                                 |                6 |             10 |         1.67 |
+|  u1/div_out_BUFG |                              | u5/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1__1_n_0 |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG   | u4/E[0]                      |                                                             |                4 |             11 |         2.75 |
+|  clk_IBUF_BUFG   | u1/tempy1                    |                                                             |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG   | u3/internal_addr[17]_i_2_n_0 | u4/FSM_onehot_currentState_reg[2]                           |                4 |             18 |         4.50 |
+|  clk_IBUF_BUFG   | u3/y1[8]_i_1_n_0             |                                                             |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG   | u3/h1[10]_i_1_n_0            |                                                             |               11 |             21 |         1.91 |
+|  clk_IBUF_BUFG   | btn_startz/counter           | btn_startz/counter[21]_i_1_n_0                              |                7 |             22 |         3.14 |
+|  clk_IBUF_BUFG   | btn_up/counter               | btn_up/counter[21]_i_1_n_0                                  |                7 |             22 |         3.14 |
+|  clk_IBUF_BUFG   | u1/tempy1                    | u3/pipeMoveTimer[23]_i_1_n_0                                |                6 |             23 |         3.83 |
+|  clk_IBUF_BUFG   | u3/timer                     | u3/timer[26]_i_1_n_0                                        |                7 |             26 |         3.71 |
+|  clk_IBUF_BUFG   | u3/tempCounter               | u3/tempCounter[26]_i_1_n_0                                  |                8 |             27 |         3.38 |
+|  u1/div_out_BUFG |                              | u5/U0/DataEncoders[0].DataEncoder/SR[0]                     |               19 |             32 |         1.68 |
+|  u1/div_out_BUFG |                              |                                                             |               26 |             49 |         1.88 |
+|  clk_IBUF_BUFG   |                              |                                                             |               58 |             75 |         1.29 |
++------------------+------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
 
 

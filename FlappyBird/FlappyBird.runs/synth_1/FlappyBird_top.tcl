@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.runs/synth_1/FlappyBird_top.tcl"
+  variable script "C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/synth_1/FlappyBird_top.tcl"
   variable category "vivado_synth"
 }
 
@@ -71,9 +71,10 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 4
-set_param synth.incrementalSynthesisCache C:/Users/keyur/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-16092-Key/incrSyn
+set_param chipscope.maxJobs 3
+set_param synth.incrementalSynthesisCache C:/Users/keyur/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-12480-KeyComputadora/incrSyn
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -83,37 +84,37 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.cache/wt [current_project]
-set_property parent.project_path C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/wt [current_project]
+set_property parent.project_path C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.xpr [current_project]
 set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property board_part_repo_paths {C:/Users/keyur/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
-set_property board_part digilentinc.com:zybo-z7-10:part0:1.1 [current_project]
-set_property ip_repo_paths c:/Users/keyur/Documents/Vivado/vivado-library-master [current_project]
+set_property ip_repo_paths {
+  c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/vivado-library-master
+  c:/Users/keyur/OneDrive/Documents/Vivado/vivado-library-master
+} [current_project]
 update_ip_catalog
-set_property ip_output_repo c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.cache/ip [current_project]
+set_property ip_output_repo c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files C:/Users/keyur/Documents/Vivado/FBFiles/StartMenuReal.coe
-add_files C:/Users/keyur/Documents/Vivado/FBFiles/flappybird.coe
+add_files C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/StartMenuReal.coe
+add_files C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/flappybird.coe
 read_vhdl -library xil_defaultlib {
-  C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/birdPixels.vhd
-  C:/Users/keyur/Documents/Vivado/FBFiles/clock_div.vhd
-  C:/Users/keyur/Documents/Vivado/FBFiles/debounce.vhd
-  C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/pipeGen.vhd
-  C:/Users/keyur/Documents/Vivado/FBFiles/pixel_pusher_hdmi.vhd
-  C:/Users/keyur/Documents/Vivado/FBFiles/vga_ctrl.vhd
-  C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/new/FlappyBird_top.vhd
+  C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.srcs/sources_1/new/birdPixels.vhd
+  C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/clock_div.vhd
+  C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/debounce.vhd
+  C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/pixel_pusher_hdmi.vhd
+  C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/vga_ctrl.vhd
+  C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.srcs/sources_1/new/FlappyBird_top.vhd
 }
-read_ip -quiet C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/ip/picture/picture.xci
-set_property used_in_implementation false [get_files -all c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.gen/sources_1/ip/picture/picture_ooc.xdc]
+read_ip -quiet C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.srcs/sources_1/ip/picture/picture.xci
+set_property used_in_implementation false [get_files -all c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/picture/picture_ooc.xdc]
 
-read_ip -quiet C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc]
+read_ip -quiet C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -124,14 +125,14 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/keyur/Documents/Vivado/FBFiles/Zybo Z7.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/keyur/Documents/Vivado/FBFiles/Zybo Z7.xdc}}]
+read_xdc {{C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/Zybo Z7.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/Zybo Z7.xdc}}]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.srcs/utils_1/imports/synth_1/hdmi_top.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.srcs/utils_1/imports/synth_1/hdmi_top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

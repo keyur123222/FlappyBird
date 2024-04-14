@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1712959489">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1713066722">
   <File Type="ROUTE-PWR" Name="FlappyBird_top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="FlappyBird_top.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="FlappyBird_top_power_summary_routed.pb"/>
@@ -111,12 +111,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/pipeGen.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../FBFiles/pixel_pusher_hdmi.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -131,6 +125,13 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/FlappyBird_top.vhd">
       <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pipeGen.vhd">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>

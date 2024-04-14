@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird.runs/impl_1'
+HD_PWD='C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -1,0 +1,4 @@
+Running: xsim.dir/pipegen_tb_behav/xsimk.exe -simmode gui -wdb pipegen_tb_behav.wdb -simrunnum 0 -socket 60321
+Design successfully loaded
+Design Loading Memory Usage: 7272 KB (Peak: 7272 KB)
+Design Loading CPU Usage: 15 ms
