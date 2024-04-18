@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../FlappyBird.gen/sources_1/ip/picture/picture_sim_netlist.vhdl" \
+
+# Do not sort compile order
+nosort

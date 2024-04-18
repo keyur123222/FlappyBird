@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sat Apr 13 23:55:55 2024
-| Host         : KeyComputadora running 64-bit major release  (build 9200)
+| Date         : Sun Apr 14 22:05:44 2024
+| Host         : Key running 64-bit major release  (build 9200)
 | Command      : report_methodology -file FlappyBird_top_methodology_drc_routed.rpt -pb FlappyBird_top_methodology_drc_routed.pb -rpx FlappyBird_top_methodology_drc_routed.rpx
 | Design       : FlappyBird_top
 | Device       : xc7z010clg400-1
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 111
+             Violations found: 112
 +-----------+------------------+---------------------------------------------+------------+
 | Rule      | Severity         | Description                                 | Violations |
 +-----------+------------------+---------------------------------------------+------------+
 | TIMING-17 | Critical Warning | Non-clocked sequential cell                 | 99         |
-| TIMING-18 | Warning          | Missing input or output delay               | 11         |
+| TIMING-18 | Warning          | Missing input or output delay               | 12         |
 | XDCB-5    | Warning          | Runtime inefficient way to find pin objects | 1          |
 +-----------+------------------+---------------------------------------------+------------+
 
@@ -536,50 +536,55 @@ Related violations: <none>
 
 TIMING-18#2 Warning
 Missing input or output delay  
-An input delay is missing on btn_start relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on btn_skin relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#3 Warning
 Missing input or output delay  
-An output delay is missing on clk_n relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An input delay is missing on btn_start relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#4 Warning
 Missing input or output delay  
-An output delay is missing on clk_p relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on clk_n relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#5 Warning
 Missing input or output delay  
-An output delay is missing on data_n[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on clk_p relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#6 Warning
 Missing input or output delay  
-An output delay is missing on data_n[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on data_n[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#7 Warning
 Missing input or output delay  
-An output delay is missing on data_n[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on data_n[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#8 Warning
 Missing input or output delay  
-An output delay is missing on data_p[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on data_n[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#9 Warning
 Missing input or output delay  
-An output delay is missing on data_p[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on data_p[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#10 Warning
 Missing input or output delay  
-An output delay is missing on data_p[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on data_p[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#11 Warning
+Missing input or output delay  
+An output delay is missing on data_p[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-18#12 Warning
 Missing input or output delay  
 An output delay is missing on led relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
@@ -587,7 +592,7 @@ Related violations: <none>
 XDCB-5#1 Warning
 Runtime inefficient way to find pin objects  
 The option '-through : [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '2' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
-Current XDC: c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc (Line: 5)
+Current XDC: c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc (Line: 5)
 Related violations: <none>
 
 

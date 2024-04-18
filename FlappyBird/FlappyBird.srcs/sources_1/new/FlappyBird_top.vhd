@@ -11,7 +11,7 @@ entity FlappyBird_top is
         clk_p, clk_n: out std_logic;
         hdmi_tx_hpd: out std_logic;
 
-        btn, btn_start: in std_logic;
+        btn, btn_start, btn_skin: in std_logic;
         led: out std_logic
 
     );
@@ -34,11 +34,13 @@ architecture Behavioral of FlappyBird_top is
             addr        : out STD_LOGIC_VECTOR(17 downto 0);
 
 
-            btn_up, start_btn: in std_logic;
+            btn_up, start_btn, skin_btn: in std_logic;
             led_ind: out std_logic:= '0';
 
-            birdPixel: in std_logic_vector(7 downto 0);
-            addr2: out integer
+            birdPixel, bird2Pixel: in std_logic_vector(7 downto 0);
+            addr2, addr3: out integer
+
+
 
         );
     end component;
@@ -107,29 +109,31 @@ architecture Behavioral of FlappyBird_top is
         );
     end component;
 
---    component pipeGen is
---        port (
---            clk : in STD_LOGIC;
---            pipeGenVector: in std_logic_vector(3 downto 0);
---            y1, y2: out integer
---        );
---    end component;
+    component bird2Pixels is
+        port (
+            clk: in std_logic;
+            addr: in integer;
+            pixel_out: out std_logic_vector(7 downto 0)
+
+        );
+    end component;
+
 
 
 
     signal div_out, vs_out, hs_out, vid_out: std_logic;
     signal addr_out: std_logic_vector (17 downto 0);
-    signal pixel_out, birdPixel_out : std_logic_vector(7 downto 0);
+    signal pixel_out, birdPixel_out, bird2Pixel_out: std_logic_vector(7 downto 0);
     signal hcount_out, vcount_out: std_logic_vector(9 downto 0);
     signal rgb24: std_logic_vector(23 downto 0);
     signal vga_r, vga_g, vga_b: std_logic_vector(7 downto 0);
 
     signal arst, arst_n: std_logic;
 
-    signal dbnc1, dbnc2, ledind: std_logic;
+    signal dbnc1, dbnc2, dbnc3, ledind : std_logic;
 
     signal unused: std_logic;
-    signal addr2_out: integer;
+    signal addr2_out, addr3_out: integer;
 
     signal pipeGenCounterOut_signal: STD_LOGIC_VECTOR (3 downto 0);
 
@@ -169,8 +173,11 @@ begin
             btn_up => dbnc1,
             led_ind => ledind,
             start_btn => dbnc2,
+            skin_btn => dbnc3,
             birdPixel => birdPixel_out,
-            addr2 => addr2_out
+            bird2Pixel => bird2Pixel_out,
+            addr2 => addr2_out,
+            addr3 => addr3_out
 
 
         );
@@ -215,6 +222,13 @@ begin
             debounced_button => dbnc2
         );
 
+    btn_skinz: debounce
+        port map(
+            clk => clk,
+            button => btn_skin,
+            debounced_button => dbnc3
+        );
+
     u6: birdPixels
         port map(
             clk => clk,
@@ -223,14 +237,15 @@ begin
 
         );
 
---    pipe: pipeGen
---        port map(
---            clk => div_out,
---            pipeGenVector => pipeGenCounterOut_signal, 
---            y1 => y1_out,
---            y2 => y2_out
+    u7: bird2Pixels
+        port map(
+            clk => clk,
+            addr => addr3_out,
+            pixel_out => bird2Pixel_out
 
---        );
+        );
+
+
 
 
     --    led <= '1' when btn = '1' else '0';

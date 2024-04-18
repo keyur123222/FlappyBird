@@ -19,11 +19,11 @@ entity pixel_pusher_hdmi is
         addr        : out STD_LOGIC_VECTOR(17 downto 0);
 
 
-        btn_up, start_btn: in std_logic;
+        btn_up, start_btn, skin_btn: in std_logic;
         led_ind: out std_logic:= '0';
 
-        birdPixel: in std_logic_vector(7 downto 0);
-        addr2: out integer
+        birdPixel, bird2Pixel: in std_logic_vector(7 downto 0);
+        addr2, addr3: out integer
 
 
 
@@ -32,14 +32,14 @@ end pixel_pusher_hdmi;
 
 architecture Behavioral of pixel_pusher_hdmi is
     signal internal_addr : unsigned(17 downto 0) := (others => '0');
-    signal internal_addr2: integer range 0 to 1999:= 0;
+    signal internal_addr2, internal_addr3: integer range 0 to 1999:= 0;
 
     signal y1: integer range 0 to 480:= 230;
     signal y2: integer range 0 to 480:= 270;
 
     signal h1: integer range -70 to 640:= 640;
     signal h2: integer range 0 to 710:= 710;
-    
+
     signal birdx1: integer:= 200;
     signal birdx2: integer:= 250;
 
@@ -47,16 +47,20 @@ architecture Behavioral of pixel_pusher_hdmi is
     signal tempCounter: integer range 0 to 125000000:= 0; -- 1 seconds;
     signal pipeMoveTimer: integer range 0 to 12500000:= 0; -- 0.5 seconds in 25Mhz
     signal pipeGenTimer: integer range 0 to 625000000:= 0; -- 5 seconds
+    signal skinTimer: integer range 0 to 25000000:= 0;
 
     type state is (start, playing, gameover);
     signal currentState: state:= start;
 
     signal tempBoolean: boolean:= FALSE;
+    signal buttonCheck: boolean:= FALSE;
 
     signal pipeGenCounter: std_logic_vector(3 downto 0);
 
     signal tempy1, tempy2: integer;
 
+    signal skinVector: std_logic_vector(1 downto 0):= "00";
+    signal skinSelect: boolean:= TRUE;
 
 begin
 
@@ -75,19 +79,79 @@ begin
                             B <= pixel(1 downto 0) & "000000"; -- Resize to 8 bits
 
                             internal_addr <= internal_addr + 1;
-                        else
-                            R <= (others => '0');
-                            G <= (others => '0');
-                            B <= (others => '0');
+                        elsif vid = '1' and hcount >= 0 and hcount < 80 and vcount >= 0 and vcount < 430 then                                
+                            R <= "011" & "00000"; -- blueish sky
+                            G <= "101" & "00000"; -- blueish sky
+                            B <= "11" & "000000"; -- blueish sky
+                        elsif vid = '1' and hcount >= 560 and hcount < 640 and vcount >= 0 and vcount < 430 then                                
+                            R <= "011" & "00000"; -- blueish sky
+                            G <= "101" & "00000"; -- blueish sky
+                            B <= "11" & "000000"; -- blueish sky
+                        elsif vid = '1' and hcount >= 0 and hcount < 80 and vcount >= 430 and vcount < 480 then                                
+                            R <= "000" & "00000"; -- green ground
+                            G <= "011" & "00000"; -- green ground
+                            B <= "00" & "000000"; -- green ground
+                        elsif vid = '1' and hcount >= 560 and hcount < 640 and vcount >= 430 and vcount < 480 then                                
+                            R <= "000" & "00000"; -- green ground
+                            G <= "011" & "00000"; -- green ground
+                            B <= "00" & "000000"; -- green ground
                         end if;
                         if vs = '0' then
                             internal_addr <= (others => '0'); -- Reset on VS pulse
                         end if;
 
                     end if;
+                
+                    
 
                     if start_btn = '1' and tempBoolean = FALSE then
                         currentState <= playing;
+                    end if;
+
+                    if skin_btn = '1' then
+                        skinTimer <= skinTimer + 1;
+                        if buttonCheck = FALSE  and skinTimer = 10 then
+                            skinVector <= skinVector + 1;
+                            buttonCheck <= TRUE;
+                            skinTimer <= 0;
+
+
+                            
+                        end if;
+                    else
+                        buttonCheck <= FALSE;
+                    end if;
+
+                    if clk_enable = '1' then
+                        if skinVector <= "00" then
+                            if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 145 and vcount < 185) then -- bird
+                                R <= birdPixel(7 downto 5) & "00000"; -- 
+                                G <= birdPixel(4 downto 2) & "00000"; -- 
+                                B <= birdPixel(1 downto 0) & "000000"; -- 
+                                internal_addr2 <= internal_addr2 + 1;
+                            end if;
+                            if vs = '0' then
+                                internal_addr2 <= 0; -- Reset on VS pulse
+                            end if;
+                            skinSelect <= TRUE;
+                        elsif skinVector <= "01" then
+
+                            if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 145 and vcount < 185) then -- bird
+                                R <= bird2Pixel(7 downto 5) & "00000"; -- 
+                                G <= bird2Pixel(4 downto 2) & "00000"; -- 
+                                B <= bird2Pixel(1 downto 0) & "000000"; -- 
+                                internal_addr3 <= internal_addr3 + 1;
+                            end if;
+                            if vs = '0' then
+                                internal_addr3 <= 0; -- Reset on VS pulse
+                            end if;
+
+                            skinSelect <= FALSE;
+
+
+
+
+                        end if;
                     end if;
 
 
@@ -106,21 +170,20 @@ begin
                             timer <= 0;
                         end if;
                     end if;
-                    
+
                     --object collison
                     if y2 >= 410 or y1 < 5 then
                         currentState <= gameover;
                     end if;
-                    
+
                     if (birdx1 < h2) then
-                        
                         if (birdx2 >= h1 and y1 < tempy1) then --top pipe collison
                             currentState <= gameover;
                         elsif (birdx2 >= h1 and y2 > tempy2 ) then -- bottom pipe collison
                             currentState <= gameover;
                         end if;
                     end if;
-                   
+
 
 
 
@@ -186,21 +249,30 @@ begin
                             B <= "01" & "000000";  --earth
                         end if;
 
-                        --                        if vid = '1' and (hcount >= 220 and hcount < 230 and vcount >= y1 and vcount < y2) then -- bird
-                        --                            R <= "111" & "00000"; -- yellow
-                        --                            G <= "111" & "00000"; -- yellow
-                        --                            B <= "00" & "000000"; -- yellow
-                        --                        end if;
 
-                        if vid = '1' and (hcount >= birdx1 and hcount < birdx2 and vcount >= y1 and vcount < y2) then -- bird
-                            R <= birdPixel(7 downto 5) & "00000"; -- 
-                            G <= birdPixel(4 downto 2) & "00000"; -- 
-                            B <= birdPixel(1 downto 0) & "000000"; -- 
-                            internal_addr2 <= internal_addr2 + 1;
+                        if skinSelect = TRUE then
+                            if vid = '1' and (hcount >= birdx1 and hcount < birdx2 and vcount >= y1 and vcount < y2) then -- bird
+                                R <= birdPixel(7 downto 5) & "00000"; -- 
+                                G <= birdPixel(4 downto 2) & "00000"; -- 
+                                B <= birdPixel(1 downto 0) & "000000"; -- 
+                                internal_addr2 <= internal_addr2 + 1;
+                            end if;
+                            if vs = '0' then
+                                internal_addr2 <= 0; -- Reset on VS pulse
+                            end if;
+                        elsif skinSelect = FALSE then
+                            if vid = '1' and (hcount >= birdx1 and hcount < birdx2 and vcount >= y1 and vcount < y2) then -- bird
+                                R <= bird2Pixel(7 downto 5) & "00000"; -- 
+                                G <= bird2Pixel(4 downto 2) & "00000"; -- 
+                                B <= bird2Pixel(1 downto 0) & "000000"; -- 
+                                internal_addr3 <= internal_addr3 + 1;
+                            end if;
+                            if vs = '0' then
+                                internal_addr3 <= 0; -- Reset on VS pulse
+                            end if;
                         end if;
-                        if vs = '0' then
-                            internal_addr2 <= 0; -- Reset on VS pulse
-                        end if;
+
+
 
 
                         if pipeMoveTimer = 410000 then
@@ -325,4 +397,5 @@ begin
 
     addr <= std_logic_vector(internal_addr);
     addr2 <= internal_addr2;
+    addr3 <= internal_addr3;
 end Behavioral;
