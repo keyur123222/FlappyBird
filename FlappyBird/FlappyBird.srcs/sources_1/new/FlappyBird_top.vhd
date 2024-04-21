@@ -11,8 +11,8 @@ entity FlappyBird_top is
         clk_p, clk_n: out std_logic;
         hdmi_tx_hpd: out std_logic;
 
-        btn, btn_start, btn_skin: in std_logic;
-        led: out std_logic
+        btn, btn_start, btn_skin, btn_uart: in std_logic;
+        led, RXD: out std_logic
 
     );
 end FlappyBird_top;
@@ -24,7 +24,7 @@ architecture Behavioral of FlappyBird_top is
             clk         : in  STD_LOGIC;
             clk_enable  : in  STD_LOGIC;
             vs          : in  STD_LOGIC;
-            pixel       : in  STD_LOGIC_VECTOR(7 downto 0);
+
             hcount      : in  STD_LOGIC_VECTOR(9 downto 0);
             vcount      : in std_logic_vector(9 downto 0);
             vid         : in  STD_LOGIC;
@@ -34,12 +34,14 @@ architecture Behavioral of FlappyBird_top is
             addr        : out STD_LOGIC_VECTOR(17 downto 0);
 
 
-            btn_up, start_btn, skin_btn: in std_logic;
+            btn_up, start_btn, skin_btn, btn_4: in std_logic;
             led_ind: out std_logic:= '0';
 
-            birdPixel, bird2Pixel: in std_logic_vector(7 downto 0);
-            addr2, addr3: out integer
+            pixel       : in  STD_LOGIC_VECTOR(7 downto 0);
+            birdPixel, bird2Pixel, bird3Pixel, bird4Pixel: in std_logic_vector(7 downto 0);
 
+            addr2, addr3, addr4, addr5: out integer;
+            uart_en, uart_rst: out std_logic
 
 
         );
@@ -75,6 +77,13 @@ architecture Behavioral of FlappyBird_top is
         );
     end component;
 
+    component clock_div_9600 is
+        port(
+            clk  : in std_logic;        -- 125 Mhz clock
+            div : out std_logic         -- 9600 hz 
+        );
+    end component;
+
     component rgb2dvi_0 is
         PORT (
             TMDS_Clk_p : OUT STD_LOGIC;
@@ -82,7 +91,6 @@ architecture Behavioral of FlappyBird_top is
             TMDS_Data_p : OUT STD_LOGIC_VECTOR(2 DOWNTO 0); -- RGB(HDMI)          
             TMDS_Data_n : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
             aRst : IN STD_LOGIC;
-            --            aRst_n : IN STD_LOGIC;
             vid_pData : IN STD_LOGIC_VECTOR(23 DOWNTO 0); --RGB
             vid_pVDE : IN STD_LOGIC;   --vid
             vid_pHSync : IN STD_LOGIC; --hs
@@ -118,26 +126,62 @@ architecture Behavioral of FlappyBird_top is
         );
     end component;
 
+    component stevePixels is
+        port (
+            clk: in std_logic;
+            addr: in integer;
+            pixel_out: out std_logic_vector(7 downto 0)
+
+        );
+    end component;
+    
+    component susPixels is
+        port (
+            clk: in std_logic;
+            addr: in integer;
+            pixel_out: out std_logic_vector(7 downto 0)
+
+        );
+    end component;
+
+    component uart_tx is
+        port (
+            clk, en, send, rst : in std_logic;
+            char               : in std_logic_vector(7 downto 0);
+            ready, tx          : out std_logic
+
+        );
+    end component;
+
+    component sender is
+        port (
+            rst, clk, en, btn, rdy: in std_logic;
+            send: out std_logic;
+            char: out std_logic_vector(7 downto 0)
+        );
+    end component;
 
 
-
-    signal div_out, vs_out, hs_out, vid_out: std_logic;
+    signal div_out, div_9600, vs_out, hs_out, vid_out: std_logic;
     signal addr_out: std_logic_vector (17 downto 0);
-    signal pixel_out, birdPixel_out, bird2Pixel_out: std_logic_vector(7 downto 0);
+    signal pixel_out, birdPixel_out, bird2Pixel_out, bird3Pixel_out, bird4Pixel_out: std_logic_vector(7 downto 0);
     signal hcount_out, vcount_out: std_logic_vector(9 downto 0);
     signal rgb24: std_logic_vector(23 downto 0);
     signal vga_r, vga_g, vga_b: std_logic_vector(7 downto 0);
 
     signal arst, arst_n: std_logic;
 
-    signal dbnc1, dbnc2, dbnc3, ledind : std_logic;
+    signal dbnc1, dbnc2, dbnc3, dbnc4, ledind : std_logic;
 
     signal unused: std_logic;
-    signal addr2_out, addr3_out: integer;
+    signal addr2_out, addr3_out, addr4_out, addr5_out: integer;
 
     signal pipeGenCounterOut_signal: STD_LOGIC_VECTOR (3 downto 0);
 
     signal y1_out, y2_out: integer;
+
+    signal send_signal, rst_signal, ready_signal, uart_btn_signal, uart_rst_signal, uart_en_signal: std_logic;
+    signal char_signal: std_logic_vector(7 downto 0);
 
 
 begin
@@ -176,8 +220,15 @@ begin
             skin_btn => dbnc3,
             birdPixel => birdPixel_out,
             bird2Pixel => bird2Pixel_out,
+            bird3Pixel => bird3Pixel_out,
+            bird4Pixel => bird4Pixel_out,
             addr2 => addr2_out,
-            addr3 => addr3_out
+            addr3 => addr3_out,
+            addr4 => addr4_out,
+            addr5 => addr5_out,
+            btn_4 => dbnc4,
+            uart_en => uart_en_signal,
+            uart_rst => uart_rst_signal
 
 
         );
@@ -229,12 +280,18 @@ begin
             debounced_button => dbnc3
         );
 
+    btn44: debounce
+        port map(
+            clk => clk,
+            button => btn_uart,
+            debounced_button => dbnc4
+        );
+
     u6: birdPixels
         port map(
             clk => clk,
             addr => addr2_out,
             pixel_out => birdPixel_out
-
         );
 
     u7: bird2Pixels
@@ -242,10 +299,50 @@ begin
             clk => clk,
             addr => addr3_out,
             pixel_out => bird2Pixel_out
-
         );
 
+    u7_2: stevePixels
+        port map(
+            clk => clk,
+            addr => addr4_out,
+            pixel_out => bird3Pixel_out
+        );
+        
+    u7_3: susPixels
+        port map(
+            clk => clk,
+            addr => addr5_out,
+            pixel_out => bird4Pixel_out
+        );    
+        
 
+    u8: clock_div_9600
+        port map(
+            clk => clk,
+            div => div_9600
+        );
+
+    u9: uart_tx
+        port map(
+            clk => clk,
+            en  => div_9600,
+            send => send_signal,
+            rst => uart_rst_signal,
+            char => char_signal,
+            ready => ready_signal,
+            tx => RXD
+        );
+
+    u10: sender
+        port map(
+            clk => clk,
+            en =>  div_9600,
+            rst => uart_rst_signal,
+            rdy => ready_signal,
+            btn => uart_en_signal,
+            send => send_signal,
+            char => char_signal
+        );
 
 
     --    led <= '1' when btn = '1' else '0';

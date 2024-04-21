@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:{C:/Users/keyur/Documents/Vivado/FlappyBird/FBFiles/Zybo Z7.xdc} rfile:{../../../../FBFiles/Zybo Z7.xdc} id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:{C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FBFiles/Zybo Z7.xdc} rfile:{../../../../FBFiles/Zybo Z7.xdc} id:1} [current_design]
 set_property src_info {type:XDC file:1 line:8 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN K17   IOSTANDARD LVCMOS33 } [get_ports { clk }]; #IO_L12P_T1_MRCC_35 Sch=sysclk
 set_property src_info {type:XDC file:1 line:20 export:INPUT save:INPUT read:READ} [current_design]
@@ -7,6 +7,8 @@ set_property src_info {type:XDC file:1 line:21 export:INPUT save:INPUT read:READ
 set_property -dict { PACKAGE_PIN P16   IOSTANDARD LVCMOS33 } [get_ports { btn_start }]; #IO_L24N_T3_34 Sch=btn[1]
 set_property src_info {type:XDC file:1 line:22 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN K19   IOSTANDARD LVCMOS33 } [get_ports { btn_skin }]; #IO_L10P_T1_AD11P_35 Sch=btn[2]
+set_property src_info {type:XDC file:1 line:23 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN Y16   IOSTANDARD LVCMOS33 } [get_ports { btn_uart }]; #IO_L7P_T1_34 Sch=btn[3]
 set_property src_info {type:XDC file:1 line:27 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN M14   IOSTANDARD LVCMOS33 } [get_ports { led }]; #IO_L23P_T3_35 Sch=led[0]
 set_property src_info {type:XDC file:1 line:87 export:INPUT save:INPUT read:READ} [current_design]
@@ -27,3 +29,5 @@ set_property src_info {type:XDC file:1 line:96 export:INPUT save:INPUT read:READ
 set_property -dict { PACKAGE_PIN A20   IOSTANDARD TMDS_33     } [get_ports { data_n[2] }]; #IO_L2N_T0_AD8N_35 Sch=hdmi_tx_n[2]
 set_property src_info {type:XDC file:1 line:97 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN B19   IOSTANDARD TMDS_33     } [get_ports { data_p[2] }]; #IO_L2P_T0_AD8P_35 Sch=hdmi_tx_p[2]
+set_property src_info {type:XDC file:1 line:129 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN T10   IOSTANDARD LVCMOS33     } [get_ports { RXD }]; #IO_L1N_T0_34 Sch=jc_n[2]

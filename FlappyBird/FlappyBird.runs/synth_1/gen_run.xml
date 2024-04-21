@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1713146638" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/hdmi_top.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1713664151" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/hdmi_top.dcp">
   <File Type="PA-TCL" Name="FlappyBird_top.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="FlappyBird_top_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="FlappyBird_top_reports.tcl"/>
@@ -29,6 +29,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../FBFiles/clock_div_9600.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../FBFiles/debounce.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -36,6 +42,30 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../FBFiles/pixel_pusher_hdmi.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../FBFiles/sender.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/stevePixels.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/susPixels.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../FBFiles/uart_tx.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
