@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date                      : Sat Apr 20 21:52:31 2024
-| Host                      : KeyComputadora running 64-bit major release  (build 9200)
+| Date                      : Sun Apr 21 17:50:56 2024
+| Host                      : Key running 64-bit major release  (build 9200)
 | Command                   : report_io -file FlappyBird_top_io_placed.rpt
 | Design                    : FlappyBird_top
 | Device                    : xc7z010
@@ -430,7 +430,7 @@ Table of Contents
 | Y13        |             |            | NC                      | Not Connected |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | Y14        |             | High Range | IO_L8N_T1_34            | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | Y15        |             |            | GND                     | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
-| Y16        | btn_uart    | High Range | IO_L7P_T1_34            | INPUT         | LVCMOS33    |      34 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| Y16        | btn_speed   | High Range | IO_L7P_T1_34            | INPUT         | LVCMOS33    |      34 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | Y17        |             | High Range | IO_L7N_T1_34            | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | Y18        |             | High Range | IO_L17P_T2_34           | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | Y19        |             | High Range | IO_L17N_T2_34           | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |

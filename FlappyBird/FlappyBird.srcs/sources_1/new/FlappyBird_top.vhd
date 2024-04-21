@@ -11,7 +11,7 @@ entity FlappyBird_top is
         clk_p, clk_n: out std_logic;
         hdmi_tx_hpd: out std_logic;
 
-        btn, btn_start, btn_skin, btn_uart: in std_logic;
+        btn, btn_start, btn_skin, btn_speed: in std_logic;
         led, RXD: out std_logic
 
     );
@@ -283,7 +283,7 @@ begin
     btn44: debounce
         port map(
             clk => clk,
-            button => btn_uart,
+            button => btn_speed,
             debounced_button => dbnc4
         );
 

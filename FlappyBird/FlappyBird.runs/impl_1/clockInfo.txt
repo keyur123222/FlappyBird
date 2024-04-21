@@ -1,7 +1,7 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Sat Apr 20 21:52:01 2024
-| Host         : KeyComputadora
+| Date         : Sun Apr 21 17:50:29 2024
+| Host         : Key
 | Design       : design_1
 | Device       : xc7z010-clg400-1--
 -------------------------------------

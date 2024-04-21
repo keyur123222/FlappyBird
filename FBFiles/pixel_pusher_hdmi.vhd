@@ -53,6 +53,7 @@ architecture Behavioral of pixel_pusher_hdmi is
     signal pipeMoveTimer: integer range 0 to 12500000:= 0; -- 0.5 seconds in 25Mhz
     signal pipeGenTimer: integer range 0 to 625000000:= 0; -- 5 seconds
     signal skinTimer: integer range 0 to 25000000:= 0;
+    signal speedTimer: integer range 0 to 25000000:= 0;
     signal Utimer: integer range 0 to 125000003;
 
     type state is (start, playing, gameover);
@@ -60,14 +61,16 @@ architecture Behavioral of pixel_pusher_hdmi is
 
     signal tempBoolean: boolean:= FALSE;
     signal buttonCheck: boolean:= FALSE;
+    signal buttonCheck2: boolean:= FALSE;
 
     signal pipeGenCounter: std_logic_vector(3 downto 0);
 
     signal tempy1, tempy2: integer;
 
-    signal skinVector: std_logic_vector(1 downto 0):= "00";
-    signal skinSelect: boolean:= TRUE;
-    signal skinSelect2: boolean:= TRUE;
+    signal skinVector, speedVector: std_logic_vector(1 downto 0):= "00";
+    signal skinSelect, skinSelect2: boolean:= TRUE;
+    signal speedSelect, speedSelect2: boolean:= FALSE;
+    signal speedIncrement: integer;
 
 begin
 
@@ -77,6 +80,7 @@ begin
 
             case currentState is
 
+                --menu screen
                 when start =>
                     uart_rst <= '0'; -- turn off uart rst (clear screen)
 
@@ -111,7 +115,7 @@ begin
                     end if;
 
 
-
+                    --button to go to playing state
                     if start_btn = '1' and tempBoolean = FALSE then
                         currentState <= playing;
                     end if;
@@ -119,7 +123,7 @@ begin
                     --skin changer
                     if skin_btn = '1' then
                         skinTimer <= skinTimer + 1;
-                        if buttonCheck = FALSE  and skinTimer = 9 then
+                        if buttonCheck = FALSE  and skinTimer = 8 then
                             skinVector <= skinVector + 1;
                             buttonCheck <= TRUE;
                             skinTimer <= 0;
@@ -128,7 +132,20 @@ begin
                     else
                         buttonCheck <= FALSE;
                     end if;
+                    
+                    --difficulty changer
+                    if btn_4 = '1' then
+                        speedTimer <= speedTimer + 1;  
+                        if buttonCheck2 = FALSE  and speedTimer = 8 then
+                            speedVector <= speedVector + 1;
+                            buttonCheck2 <= TRUE;
+                            speedTimer <= 0;
+                        end if;
+                    else
+                        buttonCheck2 <= FALSE;
+                    end if;
 
+                    --skin select menu screen
                     if clk_enable = '1' then
                         if skinVector <= "00" then
                             if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 145 and vcount < 185) then -- bird
@@ -188,8 +205,58 @@ begin
                         end if;
                     end if;
 
+                    
+
+                    --speed difficulty select menu screen
+                    if clk_enable = '1' then
+                        if speedVector <= "00" then
+                            if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 332 and vcount < 382) then -- bird
+                                R <= "000" & "00000"; -- green
+                                G <= "111" & "00000"; -- green
+                                B <= "00" & "000000"; -- green
+                            end if;
+
+                            speedSelect <= FALSE;
+                            speedSelect2 <= FALSE;
+                            speedIncrement <= 2;
+                        elsif speedVector <= "01" then
+
+                            if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 332 and vcount < 382) then -- bird
+                                R <= "111" & "00000"; -- Yellow
+                                G <= "111" & "00000"; -- Yellow
+                                B <= "00" & "000000"; -- Yellow
+                            end if;
+
+                            speedSelect <= FALSE;
+                            speedSelect2 <= TRUE;
+                            speedIncrement <= 4;
+                        elsif speedVector <= "10" then
+
+                            if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 332 and vcount < 382) then -- bird
+                                R <= "111" & "00000"; -- Orange
+                                G <= "101" & "00000"; -- Orange
+                                B <= "00" & "000000"; -- Orange
+                            end if;
+
+                            speedSelect <= TRUE;
+                            speedSelect2 <= FALSE;
+                            speedIncrement <= 5;
+                        elsif speedVector <= "11" then
+
+                            if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 332 and vcount < 382) then -- bird
+                                R <= "111" & "00000"; -- Red
+                                G <= "001" & "00000"; -- Red
+                                B <= "00" & "000000"; -- Red
+                            end if;
+
+                            speedSelect <= TRUE;
+                            speedSelect2 <= TRUE;
+                            speedIncrement <= 8;
+                        end if;
+                    end if;
 
 
+                --start screen
                 when playing =>
                     if btn_up = '1' then -- jump
                         y1 <= y1 - 15;
@@ -227,8 +294,9 @@ begin
 
 
 
-
+                    
                     if clk_enable = '1' then
+                        --draw background
                         if vid = '1' and hcount < 640 then -- hcount < 480     -- background    
                             R <= "011" & "00000"; -- blueish sky
                             G <= "101" & "00000"; -- blueish sky
@@ -242,13 +310,14 @@ begin
                             internal_addr <= (others => '0'); -- Reset on VS pulse
                         end if;
 
+                        --draw dark brown line
                         if vid = '1' and (hcount >= 0 and hcount < 640 and vcount >= 410 and vcount < 415) then -- line
                             R <= "010" & "00000";  --dark brown
                             G <= "001" & "00000";  --dark brown
                             B <= "00" & "000000";  --dark brown
                         end if;
 
-
+                        --draw ground
                         if vid = '1' and (hcount >= 0 and hcount < 640 and vcount >= 415 and vcount < 435) then -- ground
                             R <= "000" & "00000";  --green
                             G <= "111" & "00000";  --green
@@ -334,13 +403,13 @@ begin
 
                         end if;
 
-
+                        --pipe speed controller
                         if pipeMoveTimer = 410000 then
                             h1 <= h1 - 1;
                             h2 <= h2 - 1;
                             pipeMoveTimer <= 0;
                         else
-                            pipeMoveTimer <= pipeMoveTimer + 4;
+                            pipeMoveTimer <= pipeMoveTimer + speedIncrement;
                         end if;
 
                         if h1 = -70 then
@@ -349,6 +418,7 @@ begin
                             pipeGenCounter <= pipeGenCounter + 1;
                         end if;
 
+                        --pipe config
                         if pipeGenCounter <= "0000" then
                             tempy1 <= 190;
                             tempy2 <= 190 + 120;
@@ -399,25 +469,22 @@ begin
                             tempy2 <= 15 + 120;
                         end if;
 
+                        --drawing top and bottom pipe
                         if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= 0 and vcount < tempy1) then -- pipe top
                             R <= "000" & "00000";  --pipe top
                             G <= "100" & "00000";  --pipe top 
                             B <= "00" & "000000";  --pipe top 
                         end if;
 
-                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= tempy2 and vcount < 410) then -- pipe top
-                            R <= "000" & "00000"; --pipe bot
-                            G <= "100" & "00000"; --pipe bot
-                            B <= "00" & "000000"; --pipe bot
+                        if vid = '1' and (hcount >= h1 and hcount < h2 and vcount >= tempy2 and vcount < 410) then -- pipe bottom
+                            R <= "000" & "00000"; --pipe bottom
+                            G <= "100" & "00000"; --pipe bottom
+                            B <= "00" & "000000"; --pipe bottom
                         end if;
-
-
-
-
 
                     end if;
 
-
+                --death screen
                 when gameover =>
                     if clk_enable = '1' then
                         if vid = '1' and hcount < 640 then -- hcount < 480           
@@ -444,7 +511,8 @@ begin
                         currentState <= start;
                         tempBoolean <= FALSE;
                         uart_rst <= '1'; --reset the score                   
-                        pipeGenCounter <= pipeGenCounter + 2;
+                        pipeGenCounter <= "0000";
+                  
                     end if;
 
 
