@@ -24,7 +24,7 @@ architecture Behavioral of FlappyBird_top is
             clk         : in  STD_LOGIC;
             clk_enable  : in  STD_LOGIC;
             vs          : in  STD_LOGIC;
-
+    
             hcount      : in  STD_LOGIC_VECTOR(9 downto 0);
             vcount      : in std_logic_vector(9 downto 0);
             vid         : in  STD_LOGIC;
@@ -32,16 +32,17 @@ architecture Behavioral of FlappyBird_top is
             G           : out STD_LOGIC_VECTOR(7 downto 0);
             B           : out STD_LOGIC_VECTOR(7 downto 0);
             addr        : out STD_LOGIC_VECTOR(17 downto 0);
-
-
+    
+    
             btn_up, start_btn, skin_btn, btn_4: in std_logic;
             led_ind: out std_logic:= '0';
-
+    
             pixel       : in  STD_LOGIC_VECTOR(7 downto 0);
-            birdPixel, bird2Pixel, bird3Pixel, bird4Pixel: in std_logic_vector(7 downto 0);
-
-            addr2, addr3, addr4, addr5: out integer;
-            uart_en, uart_rst: out std_logic
+            birdPixel, bird2Pixel, bird3Pixel, bird4Pixel, gopixels: in std_logic_vector(7 downto 0);
+    
+            addr2, addr3, addr4, addr5, addr6: out integer;
+            uart_en, uart_rst, sender_state: out std_logic  
+            
 
 
         );
@@ -143,6 +144,15 @@ architecture Behavioral of FlappyBird_top is
 
         );
     end component;
+    
+    component gameOverPixels is
+        port (
+            clk: in std_logic;
+            addr: in integer;
+            pixel_out: out std_logic_vector(7 downto 0)
+
+        );
+    end component;
 
     component uart_tx is
         port (
@@ -157,14 +167,16 @@ architecture Behavioral of FlappyBird_top is
         port (
             rst, clk, en, btn, rdy: in std_logic;
             send: out std_logic;
-            char: out std_logic_vector(7 downto 0)
+            char: out std_logic_vector(7 downto 0);
+            stateBtn: in std_logic
+
         );
     end component;
 
 
     signal div_out, div_9600, vs_out, hs_out, vid_out: std_logic;
     signal addr_out: std_logic_vector (17 downto 0);
-    signal pixel_out, birdPixel_out, bird2Pixel_out, bird3Pixel_out, bird4Pixel_out: std_logic_vector(7 downto 0);
+    signal pixel_out, birdPixel_out, bird2Pixel_out, bird3Pixel_out, bird4Pixel_out, goPixels_out: std_logic_vector(7 downto 0);
     signal hcount_out, vcount_out: std_logic_vector(9 downto 0);
     signal rgb24: std_logic_vector(23 downto 0);
     signal vga_r, vga_g, vga_b: std_logic_vector(7 downto 0);
@@ -174,13 +186,13 @@ architecture Behavioral of FlappyBird_top is
     signal dbnc1, dbnc2, dbnc3, dbnc4, ledind : std_logic;
 
     signal unused: std_logic;
-    signal addr2_out, addr3_out, addr4_out, addr5_out: integer;
+    signal addr2_out, addr3_out, addr4_out, addr5_out, addr6_out: integer;
 
     signal pipeGenCounterOut_signal: STD_LOGIC_VECTOR (3 downto 0);
 
     signal y1_out, y2_out: integer;
 
-    signal send_signal, rst_signal, ready_signal, uart_btn_signal, uart_rst_signal, uart_en_signal: std_logic;
+    signal send_signal, rst_signal, ready_signal, uart_btn_signal, uart_rst_signal, uart_en_signal, sender_state_out: std_logic;
     signal char_signal: std_logic_vector(7 downto 0);
 
 
@@ -222,13 +234,16 @@ begin
             bird2Pixel => bird2Pixel_out,
             bird3Pixel => bird3Pixel_out,
             bird4Pixel => bird4Pixel_out,
+            gopixels => gopixels_out,
             addr2 => addr2_out,
             addr3 => addr3_out,
             addr4 => addr4_out,
             addr5 => addr5_out,
+            addr6 => addr6_out,
             btn_4 => dbnc4,
             uart_en => uart_en_signal,
-            uart_rst => uart_rst_signal
+            uart_rst => uart_rst_signal,
+            sender_state => sender_state_out
 
 
         );
@@ -259,28 +274,28 @@ begin
             TMDS_Data_n=> data_n
         );
 
-    btn_up: debounce
+    jmp_btn: debounce
         port map(
             clk => clk,
             button => btn,
             debounced_button => dbnc1
         );
 
-    btn_startz: debounce
+    start_btn: debounce
         port map(
             clk => clk,
             button => btn_start,
             debounced_button => dbnc2
         );
 
-    btn_skinz: debounce
+    skin_btn: debounce
         port map(
             clk => clk,
             button => btn_skin,
             debounced_button => dbnc3
         );
 
-    btn44: debounce
+    diff_btn: debounce
         port map(
             clk => clk,
             button => btn_speed,
@@ -301,28 +316,35 @@ begin
             pixel_out => bird2Pixel_out
         );
 
-    u7_2: stevePixels
+    u8: stevePixels
         port map(
             clk => clk,
             addr => addr4_out,
             pixel_out => bird3Pixel_out
         );
         
-    u7_3: susPixels
+    u9: susPixels
         port map(
             clk => clk,
             addr => addr5_out,
             pixel_out => bird4Pixel_out
-        );    
+        );   
+        
+     u10: gameOverPixels
+        port map(
+            clk => clk,
+            addr => addr6_out,
+            pixel_out => gopixels_out
+        );     
         
 
-    u8: clock_div_9600
+    u11: clock_div_9600
         port map(
             clk => clk,
             div => div_9600
         );
 
-    u9: uart_tx
+    u12: uart_tx
         port map(
             clk => clk,
             en  => div_9600,
@@ -333,7 +355,7 @@ begin
             tx => RXD
         );
 
-    u10: sender
+    u13: sender
         port map(
             clk => clk,
             en =>  div_9600,
@@ -341,7 +363,9 @@ begin
             rdy => ready_signal,
             btn => uart_en_signal,
             send => send_signal,
-            char => char_signal
+            char => char_signal,
+            stateBtn => sender_state_out
+
         );
 
 

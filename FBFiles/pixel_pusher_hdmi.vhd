@@ -23,11 +23,11 @@ entity pixel_pusher_hdmi is
         led_ind: out std_logic:= '0';
 
         pixel       : in  STD_LOGIC_VECTOR(7 downto 0);
-        birdPixel, bird2Pixel, bird3Pixel, bird4Pixel: in std_logic_vector(7 downto 0);
+        birdPixel, bird2Pixel, bird3Pixel, bird4Pixel, gopixels: in std_logic_vector(7 downto 0);
 
-        addr2, addr3, addr4, addr5: out integer;
-        uart_en, uart_rst: out std_logic
-
+        addr2, addr3, addr4, addr5, addr6: out integer;
+        uart_en, uart_rst, sender_state: out std_logic
+        
 
 
 
@@ -38,6 +38,7 @@ end pixel_pusher_hdmi;
 architecture Behavioral of pixel_pusher_hdmi is
     signal internal_addr : unsigned(17 downto 0) := (others => '0');
     signal internal_addr2, internal_addr3, internal_addr4, internal_addr5: integer range 0 to 1999:= 0;
+    signal internal_addr6: integer range 0 to 2849:= 0;
 
     signal y1: integer range 0 to 480:= 230;
     signal y2: integer range 0 to 480:= 270;
@@ -52,7 +53,8 @@ architecture Behavioral of pixel_pusher_hdmi is
     signal tempCounter: integer range 0 to 125000000:= 0; -- 1 seconds;
     signal pipeMoveTimer: integer range 0 to 12500000:= 0; -- 0.5 seconds in 25Mhz
     signal pipeGenTimer: integer range 0 to 625000000:= 0; -- 5 seconds
-    signal skinTimer: integer range 0 to 25000000:= 0;
+    signal skinTimer, btn1, btn2: integer range 0 to 25000000:= 0;
+    
     signal speedTimer: integer range 0 to 25000000:= 0;
     signal Utimer: integer range 0 to 125000003;
 
@@ -83,6 +85,7 @@ begin
                 --menu screen
                 when start =>
                     uart_rst <= '0'; -- turn off uart rst (clear screen)
+                    
 
                     if clk_enable = '1' then
                         if vid = '1' and hcount >= 80 and hcount < 560 then -- hcount < 480           
@@ -116,9 +119,24 @@ begin
 
 
                     --button to go to playing state
-                    if start_btn = '1' and tempBoolean = FALSE then
-                        currentState <= playing;
+--                    if start_btn = '1' and tempBoolean = FALSE then
+--                        currentState <= playing;
+--                    end if;
+                    
+                    if start_btn = '1' then
+                        btn2 <= btn2 + 1;
+                        if buttonCheck = FALSE  and btn2 = 7 then
+                            buttonCheck <= TRUE;
+                            btn2 <= 0;
+                           currentState <= playing;
+
+                        end if;
+                    else
+                        buttonCheck <= FALSE;
+                          
                     end if;
+                    
+                    
 
                     --skin changer
                     if skin_btn = '1' then
@@ -234,7 +252,7 @@ begin
 
                             if vid = '1' and (hcount >= 295 and hcount < 345 and vcount >= 332 and vcount < 382) then -- bird
                                 R <= "111" & "00000"; -- Orange
-                                G <= "101" & "00000"; -- Orange
+                                G <= "011" & "00000"; -- Orange
                                 B <= "00" & "000000"; -- Orange
                             end if;
 
@@ -487,32 +505,39 @@ begin
                 --death screen
                 when gameover =>
                     if clk_enable = '1' then
-                        if vid = '1' and hcount < 640 then -- hcount < 480           
-                            R <= "111" & "00000"; -- Resize to 8 bits
-                            G <= "000" & "00000"; -- Resize to 8 bits
-                            B <= "00" & "000000"; -- Resize to 8 bits 
-                        else
-                            R <= (others => '0');
-                            G <= (others => '0');
-                            B <= (others => '0');
+                        if vid = '1' and hcount >= 283 and hcount < 358 and vcount >= 221 and vcount < 259 then -- hcount < 480           
+                            R <= gopixels(7 downto 5) & "00000"; 
+                            G <= gopixels(4 downto 2) & "00000"; 
+                            B <= gopixels(1 downto 0) & "000000"; 
+                            internal_addr6 <= internal_addr6 + 1;
                         end if;
                         if vs = '0' then
-                            internal_addr <= (others => '0'); -- Reset on VS pulse
+                            internal_addr6 <= 0; -- Reset on VS pulse
                         end if;
                     end if;
 
+                    
+                    --Reset btn
                     if start_btn = '1' then
-                        tempBoolean <= TRUE;
-                    elsif btn_up = '1' and tempBoolean = TRUE then
-                        y1 <= 230; --reset bird position
-                        y2 <= 270;
-                        h1 <= 640; --reset pipe position
-                        h2 <= 710;
-                        currentState <= start;
-                        tempBoolean <= FALSE;
-                        uart_rst <= '1'; --reset the score                   
-                        pipeGenCounter <= "0000";
-                  
+                        btn1 <= btn1 + 1;
+                        if buttonCheck = FALSE  and btn1 = 7 then
+                            buttonCheck <= TRUE;
+                            btn1 <= 0;
+                            
+                            y1 <= 230; --reset bird position
+                            y2 <= 270;
+                            h1 <= 640; --reset pipe position
+                            h2 <= 710;
+                            currentState <= start;
+                            uart_rst <= '1'; --reset the score                   
+                            pipeGenCounter <= "0000";                           
+                            speedIncrement <= 0;
+                           
+                            
+                        end if;
+                    else
+                        buttonCheck <= FALSE;
+                        
                     end if;
 
 
@@ -530,4 +555,5 @@ begin
     addr3 <= internal_addr3;
     addr4 <= internal_addr4;
     addr5 <= internal_addr5;
+    addr6 <= internal_addr6;
 end Behavioral;

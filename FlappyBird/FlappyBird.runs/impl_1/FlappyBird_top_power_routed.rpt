@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sun Apr 21 17:51:36 2024
-| Host             : Key running 64-bit major release  (build 9200)
+| Date             : Fri May  3 14:55:52 2024
+| Host             : DESKTOP-4POF9LQ running 64-bit major release  (build 9200)
 | Command          : report_power -file FlappyBird_top_power_routed.rpt -pb FlappyBird_top_power_summary_routed.pb -rpx FlappyBird_top_power_routed.rpx
 | Design           : FlappyBird_top
 | Device           : xc7z010clg400-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.240        |
+| Total On-Chip Power (W)  | 0.244        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.143        |
+| Dynamic (W)              | 0.147        |
 | Device Static (W)        | 0.098        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 82.2         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.007 |        3 |       --- |             --- |
-| Slice Logic    |     0.001 |     2254 |       --- |             --- |
-|   LUT as Logic |     0.001 |      931 |     17600 |            5.29 |
-|   CARRY4       |    <0.001 |       95 |      4400 |            2.16 |
-|   Register     |    <0.001 |      645 |     35200 |            1.83 |
+| Slice Logic    |     0.001 |     2383 |       --- |             --- |
+|   LUT as Logic |     0.001 |      974 |     17600 |            5.53 |
+|   CARRY4       |    <0.001 |      112 |      4400 |            2.55 |
+|   Register     |    <0.001 |      706 |     35200 |            2.01 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   F7/F8 Muxes  |    <0.001 |       64 |     17600 |            0.36 |
-|   Others       |     0.000 |      287 |       --- |             --- |
-| Signals        |     0.001 |     1894 |       --- |             --- |
-| Block RAM      |    <0.001 |     58.5 |        60 |           97.50 |
-| I/O            |     0.132 |       16 |       100 |           16.00 |
+|   Others       |     0.000 |      294 |       --- |             --- |
+| Signals        |     0.002 |     2018 |       --- |             --- |
+| Block RAM      |     0.004 |     59.5 |        60 |           99.17 |
+| I/O            |     0.133 |       16 |       100 |           16.00 |
 | Static Power   |     0.098 |          |           |                 |
-| Total          |     0.240 |          |           |                 |
+| Total          |     0.244 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.016 |       0.011 |      0.005 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.019 |       0.014 |      0.005 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.006 |       0.000 |      0.006 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.041 |       0.040 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -83,7 +83,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.003 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -150,17 +150,18 @@ Table of Contents
 +--------------------------------------+-----------+
 | Name                                 | Power (W) |
 +--------------------------------------+-----------+
-| FlappyBird_top                       |     0.143 |
-|   u2                                 |     0.002 |
-|     U0                               |     0.002 |
-|       inst_blk_mem_gen               |     0.002 |
-|   u3                                 |     0.003 |
+| FlappyBird_top                       |     0.147 |
+|   u2                                 |     0.003 |
+|     U0                               |     0.003 |
+|       inst_blk_mem_gen               |     0.003 |
+|   u3                                 |     0.004 |
 |   u5                                 |     0.133 |
 |     U0                               |     0.133 |
 |       ClockSerializer                |     0.033 |
 |       DataEncoders[0].DataSerializer |     0.033 |
 |       DataEncoders[1].DataSerializer |     0.033 |
 |       DataEncoders[2].DataSerializer |     0.033 |
+|   u7_4                               |     0.002 |
 +--------------------------------------+-----------+
 
 

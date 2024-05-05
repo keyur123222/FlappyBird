@@ -7,8 +7,8 @@ entity sender is
     port (
         rst, clk, en, btn, rdy: in std_logic;
         send: out std_logic;
-        char: out std_logic_vector(7 downto 0)
-
+        char: out std_logic_vector(7 downto 0);
+        stateBtn: in std_logic
     );
 
 end sender;
@@ -21,13 +21,28 @@ architecture Behavioral of sender is
     signal i: integer range 0 to N-1:= 0;
     signal testCounter: integer range 0 to N:= 0;
 
+    constant N2: integer:= 34;
+    signal i2: integer range 0 to N2-1:= 0;
+    signal testCounter2: integer range 0 to N2:= 0;
+
+
+
     type word is array (0 to N-1) of std_logic_vector(7 downto 0);
     signal NETID : word := (x"53",x"63",x"6F",x"72",x"65",x"3A", x"30", x"30", x"30", x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"20", x"1B", x"5B", x"6A"); --kjr150
 
-    signal tempCounter: integer range 0 to 80:= 0;
-    signal rst_prev, btn_prev: std_logic;
+    type word2 is array
+ (0 to N2-1) of std_logic_vector(7 downto 0);
+    signal ctrl : word2 := (x"44",x"69",x"66",x"66",x"69",x"63", x"75", x"6C", x"74", x"79", x"20", x"53", x"6B", x"69", x"6E", x"1B", x"5B", x"31", x"3B", x"30", x"48", x"53", x"74", x"61", x"72", x"74", x"20", x"4A", x"75", x"6D", x"70", x"1B", x"5B", x"6A"); --kjr150
+
+
+    signal tempCounter, tempCounter2: integer range 0 to 80:= 0;
+
+    signal rst_prev, btn_prev, btn1_prev, btn2_prev: std_logic;
     signal tensCounter: integer range 0 to 9;
     signal hundCounter: integer range 0 to 99;
+
+    type state2 is (start, playing);
+    signal currentState2: state2:= start;
 
 
 begin

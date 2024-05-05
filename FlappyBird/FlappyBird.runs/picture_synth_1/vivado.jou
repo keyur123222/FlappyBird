@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Apr 21 15:40:04 2024
-# Process ID: 15832
-# Current directory: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1
+# Start of session at: Mon Apr 22 12:21:40 2024
+# Process ID: 17232
+# Current directory: C:/Users/Engineer/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1
 # Command line: vivado.exe -log picture.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source picture.tcl
-# Log file: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture.vds
-# Journal file: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1\vivado.jou
-# Running On: Key, OS: Windows, CPU Frequency: 3686 MHz, CPU Physical cores: 10, Host memory: 16908 MB
+# Log file: C:/Users/Engineer/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture.vds
+# Journal file: C:/Users/Engineer/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1\vivado.jou
+# Running On: DESKTOP-4POF9LQ, OS: Windows, CPU Frequency: 2803 MHz, CPU Physical cores: 4, Host memory: 8362 MB
 #-----------------------------------------------------------
 source picture.tcl -notrace
