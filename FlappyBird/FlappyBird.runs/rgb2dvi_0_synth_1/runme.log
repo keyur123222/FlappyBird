@@ -1,0 +1,300 @@
+
+*** Running vivado
+    with args -log rgb2dvi_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source rgb2dvi_0.tcl
+
+
+ECHO is off.
+ECHO is off.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source rgb2dvi_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 457.020 ; gain = 181.215
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository 'c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/vivado-library-master'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/keyur/OneDrive/Documents/Vivado/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/ip 
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: rgb2dvi_0
+Command: synth_design -top rgb2dvi_0 -part xc7z010clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 3332
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1313.375 ; gain = 437.773
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'rgb2dvi_0' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/synth/rgb2dvi_0.vhd:72]
+	Parameter kGenerateSerialClk bound to: 0 - type: bool 
+	Parameter kClkPrimitive bound to: PLL - type: string 
+	Parameter kRstActiveHigh bound to: 1 - type: bool 
+	Parameter kClkRange bound to: 1 - type: integer 
+	Parameter kD0Swap bound to: 0 - type: bool 
+	Parameter kD1Swap bound to: 0 - type: bool 
+	Parameter kD2Swap bound to: 0 - type: bool 
+	Parameter kClkSwap bound to: 0 - type: bool 
+INFO: [Synth 8-3491] module 'rgb2dvi' declared at 'c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.vhd:62' bound to instance 'U0' of component 'rgb2dvi' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/synth/rgb2dvi_0.vhd:124]
+INFO: [Synth 8-638] synthesizing module 'rgb2dvi' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.vhd:94]
+INFO: [Synth 8-638] synthesizing module 'ResetBridge' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/xil_defaultlib/src/SyncAsyncReset.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'SyncAsync' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/xil_defaultlib/src/SyncAsync.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'SyncAsync' (0#1) [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/xil_defaultlib/src/SyncAsync.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'ResetBridge' (0#1) [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/xil_defaultlib/src/SyncAsyncReset.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'OutputSERDES' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/OutputSERDES.vhd:76]
+	Parameter IOSTANDARD bound to: TMDS_33 - type: string 
+INFO: [Synth 8-113] binding component instance 'OutputBuffer' to cell 'OBUFDS' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/OutputSERDES.vhd:83]
+	Parameter DATA_RATE_OQ bound to: DDR - type: string 
+	Parameter DATA_RATE_TQ bound to: SDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter SERDES_MODE bound to: MASTER - type: string 
+	Parameter TBYTE_CTL bound to: FALSE - type: string 
+	Parameter TBYTE_SRC bound to: FALSE - type: string 
+	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-113] binding component instance 'SerializerMaster' to cell 'OSERDESE2' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/OutputSERDES.vhd:92]
+	Parameter DATA_RATE_OQ bound to: DDR - type: string 
+	Parameter DATA_RATE_TQ bound to: SDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter SERDES_MODE bound to: SLAVE - type: string 
+	Parameter TBYTE_CTL bound to: FALSE - type: string 
+	Parameter TBYTE_SRC bound to: FALSE - type: string 
+	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-113] binding component instance 'SerializerSlave' to cell 'OSERDESE2' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/OutputSERDES.vhd:135]
+INFO: [Synth 8-256] done synthesizing module 'OutputSERDES' (0#1) [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/OutputSERDES.vhd:76]
+INFO: [Synth 8-638] synthesizing module 'TMDS_Encoder' [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/TMDS_Encoder.vhd:80]
+INFO: [Synth 8-256] done synthesizing module 'TMDS_Encoder' (0#1) [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/TMDS_Encoder.vhd:80]
+INFO: [Synth 8-256] done synthesizing module 'rgb2dvi' (0#1) [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.vhd:94]
+INFO: [Synth 8-256] done synthesizing module 'rgb2dvi_0' (0#1) [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/synth/rgb2dvi_0.vhd:72]
+WARNING: [Synth 8-7129] Port SerialClk in module TMDS_Encoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aRst in module TMDS_Encoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aRst_n in module rgb2dvi is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1426.266 ; gain = 550.664
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1426.266 ; gain = 550.664
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1426.266 ; gain = 550.664
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1426.266 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc] for cell 'U0'
+Parsing XDC File [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc] for cell 'U0'
+Parsing XDC File [C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/rgb2dvi_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/rgb2dvi_0_synth_1/dont_touch.xdc]
+Parsing XDC File [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc] for cell 'U0'
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1457.043 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 1462.801 ; gain = 5.758
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/rgb2dvi_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input    5 Bit       Adders := 9     
+	   4 Input    5 Bit       Adders := 3     
+	   2 Input    5 Bit       Adders := 3     
+	   8 Input    4 Bit       Adders := 6     
+	   2 Input    4 Bit       Adders := 3     
++---XORs : 
+	   2 Input      1 Bit         XORs := 42    
++---Registers : 
+	               10 Bit    Registers := 3     
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 3     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 9     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 18    
++---Muxes : 
+	   4 Input   10 Bit        Muxes := 3     
+	   2 Input    9 Bit        Muxes := 3     
+	   2 Input    5 Bit        Muxes := 9     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port aRst_n in module rgb2dvi is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |LUT1      |     4|
+|2     |LUT2      |    22|
+|3     |LUT3      |    34|
+|4     |LUT4      |    23|
+|5     |LUT5      |    43|
+|6     |LUT6      |    72|
+|7     |OSERDESE2 |     8|
+|9     |FDPE      |     2|
+|10    |FDRE      |   117|
+|11    |FDSE      |    15|
+|12    |OBUFDS    |     4|
++------+----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1462.801 ; gain = 587.199
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:38 ; elapsed = 00:00:51 . Memory (MB): peak = 1462.801 ; gain = 550.664
+Synthesis Optimization Complete : Time (s): cpu = 00:00:53 ; elapsed = 00:00:55 . Memory (MB): peak = 1462.801 ; gain = 587.199
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1462.801 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1462.801 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Synth Design complete | Checksum: d37ba32a
+INFO: [Common 17-83] Releasing license: Synthesis
+37 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:00 ; elapsed = 00:01:11 . Memory (MB): peak = 1462.801 ; gain = 980.871
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1462.801 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/rgb2dvi_0_synth_1/rgb2dvi_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP rgb2dvi_0, cache-ID = 7bffeaffb3131a66
+INFO: [Coretcl 2-1174] Renamed 10 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1462.801 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/keyur/OneDrive/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/rgb2dvi_0_synth_1/rgb2dvi_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file rgb2dvi_0_utilization_synth.rpt -pb rgb2dvi_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 12 21:38:55 2024...

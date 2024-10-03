@@ -1,0 +1,13 @@
+git init
+git status
+git add .
+git commit -m "cheese"
+git remote add origin https://github.com/keyur123222/FlappyBird.git
+git push -u -f origin master
+
+git clone https://github.com/keyur123222/FlappyBird.git
+git pull
+
+git remote set-url origin new.git.url/here
+
+git remote remove

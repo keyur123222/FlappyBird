@@ -1,0 +1,409 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Thu Sep 26 18:32:23 2024
+# Process ID: 33452
+# Current directory: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent40392 C:\Users\keyur\Documents\Vivado\FlappyBird\FlappyBird\FlappyBird.xpr
+# Log file: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/vivado.log
+# Journal file: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.xpr
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Users/keyur/Documents/Vivado/FlappyBird/vivado-library-master'.
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name EnableResourceEstimation
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimCompileState
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name FeatureSet
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name LocalIPRepoLeafDirName
+ERROR: [Runs 36-378] The checkpoint 'C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.srcs/utils_1/imports/synth_1/hdmi_top.dcp' was created with 'Vivado v2023.2 (64-bit)', and cannot be opened in this version.
+open_project C:/Users/keyur/Documents/Vivado/Processor/Processor.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/keyur/Documents/Vivado/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2021.1/data/ip'.
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/keyur/Documents/Vivado/Processor/Processor.srcs/sources_1/bd/uproc_top_level/uproc_top_level.bd}
+Reading block design file <C:/Users/keyur/Documents/Vivado/Processor/Processor.srcs/sources_1/bd/uproc_top_level/uproc_top_level.bd>...
+Adding component instance block -- xilinx.com:ip:blk_mem_gen:8.4 - irMem
+Adding component instance block -- xilinx.com:ip:blk_mem_gen:8.4 - dMem
+Adding component instance block -- xilinx.com:module_ref:clock_div:1.0 - clock_div_0
+Adding component instance block -- xilinx.com:module_ref:clock_div_25:1.0 - clock_div_25_0
+Adding component instance block -- xilinx.com:module_ref:debounce:1.0 - debounce_0
+Adding component instance block -- xilinx.com:module_ref:my_alu:1.0 - my_alu_0
+Adding component instance block -- xilinx.com:module_ref:uart:1.0 - uart_0
+Adding component instance block -- xilinx.com:module_ref:vga_ctrl:1.0 - vga_ctrl_0
+Adding component instance block -- xilinx.com:module_ref:framebuffer:1.0 - framebuffer_0
+Adding component instance block -- xilinx.com:module_ref:regs:1.0 - regs_0
+Adding component instance block -- xilinx.com:module_ref:pixel_pusher:1.0 - pixel_pusher_0
+Adding component instance block -- digilentinc.com:ip:rgb2dvi:1.4 - rgb2dvi_0
+Adding component instance block -- xilinx.com:ip:xlconcat:2.1 - xlconcat_0
+Adding component instance block -- xilinx.com:ip:xlconstant:1.1 - xlconstant_0
+Adding component instance block -- xilinx.com:ip:xlconstant:1.1 - xlconstant_1
+Adding component instance block -- xilinx.com:module_ref:controls:1.0 - controls_0
+Successfully read diagram <uproc_top_level> from block design file <C:/Users/keyur/Documents/Vivado/Processor/Processor.srcs/sources_1/bd/uproc_top_level/uproc_top_level.bd>
+open_bd_design: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1176.324 ; gain = 48.676
+close_bd_design [get_bd_designs uproc_top_level]
+Wrote  : <C:/Users/keyur/Documents/Vivado/Processor/Processor.srcs/sources_1/bd/uproc_top_level/ui/bd_fa773c66.ui> 
+close_project
+open_project C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.xpr
+WARNING: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2021.1/data/ip'.
+create_bd_design "HDMI_Tester"
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+update_compile_order -fileset sources_1
+add_files -norecurse {C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/new/vga_ctrl.vhd C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/new/clock_div_25.vhd C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/new/clock_div.vhd C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/new/pixel_pusher.vhd}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference clock_div clock_div_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+create_bd_cell -type module -reference clock_div_25 clock_div_25_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+create_bd_cell -type module -reference pixel_pusher pixel_pusher_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+create_bd_cell -type module -reference vga_ctrl vga_ctrl_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+startgroup
+apply_bd_automation -rule xilinx.com:bd_rule:clkrst -config { Clk {New Clocking Wizard} Freq {100} Ref_Clk0 {} Ref_Clk1 {} Ref_Clk2 {}}  [get_bd_pins clock_div_0/clk]
+apply_bd_automation -rule xilinx.com:bd_rule:clkrst -config { Clk {New Clocking Wizard} Freq {100} Ref_Clk0 {} Ref_Clk1 {} Ref_Clk2 {}}  [get_bd_pins clock_div_25_0/clk]
+apply_bd_automation -rule xilinx.com:bd_rule:clkrst -config { Clk {New Clocking Wizard} Freq {100} Ref_Clk0 {} Ref_Clk1 {} Ref_Clk2 {}}  [get_bd_pins pixel_pusher_0/clk]
+apply_bd_automation -rule xilinx.com:bd_rule:clkrst -config { Clk {New Clocking Wizard} Freq {100} Ref_Clk0 {} Ref_Clk1 {} Ref_Clk2 {}}  [get_bd_pins vga_ctrl_0/clk]
+endgroup
+connect_bd_net [get_bd_pins vga_ctrl_0/en] [get_bd_pins clock_div_25_0/div]
+delete_bd_objs [get_bd_nets clk_wiz_clk_out1] [get_bd_cells clock_div_0]
+delete_bd_objs [get_bd_cells clk_wiz]
+delete_bd_objs [get_bd_nets clk_wiz_2_clk_out1] [get_bd_cells clk_wiz_2]
+delete_bd_objs [get_bd_nets clk_wiz_1_clk_out1]
+delete_bd_objs [get_bd_cells clk_wiz_1]
+startgroup
+make_bd_pins_external  [get_bd_pins clock_div_25_0/clk]
+endgroup
+set_property name clk [get_bd_ports clk_0]
+delete_bd_objs [get_bd_nets clk_wiz_3_clk_out1] [get_bd_cells clk_wiz_3]
+connect_bd_net [get_bd_ports clk] [get_bd_pins vga_ctrl_0/clk]
+connect_bd_net [get_bd_ports clk] [get_bd_pins pixel_pusher_0/clk]
+set_property  ip_repo_paths  C:/Users/keyur/Documents/Vivado/vivado-library-master [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/keyur/Documents/Vivado/vivado-library-master'.
+startgroup
+create_bd_cell -type ip -vlnv digilentinc.com:ip:rgb2dvi:1.4 rgb2dvi_0
+endgroup
+set_property -dict [list CONFIG.kGenerateSerialClk {false}] [get_bd_cells rgb2dvi_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0
+endgroup
+connect_bd_net [get_bd_pins xlconstant_0/dout] [get_bd_pins rgb2dvi_0/aRst]
+startgroup
+set_property -dict [list CONFIG.CONST_VAL {0}] [get_bd_cells xlconstant_0]
+endgroup
+connect_bd_net [get_bd_ports clk] [get_bd_pins rgb2dvi_0/SerialClk]
+connect_bd_net [get_bd_pins rgb2dvi_0/PixelClk] [get_bd_pins clock_div_25_0/div]
+regenerate_bd_layout
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
+endgroup
+set_property -dict [list CONFIG.IN0_WIDTH.VALUE_SRC USER CONFIG.IN1_WIDTH.VALUE_SRC USER CONFIG.IN2_WIDTH.VALUE_SRC USER] [get_bd_cells xlconcat_0]
+set_property -dict [list CONFIG.NUM_PORTS {3} CONFIG.IN0_WIDTH {8} CONFIG.IN1_WIDTH {8} CONFIG.IN2_WIDTH {8}] [get_bd_cells xlconcat_0]
+connect_bd_net [get_bd_pins pixel_pusher_0/R] [get_bd_pins xlconcat_0/In0]
+connect_bd_net [get_bd_pins pixel_pusher_0/B] [get_bd_pins xlconcat_0/In1]
+connect_bd_net [get_bd_pins pixel_pusher_0/G] [get_bd_pins xlconcat_0/In2]
+connect_bd_net [get_bd_pins rgb2dvi_0/vid_pData] [get_bd_pins xlconcat_0/dout]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pData> is being overridden by the user with net <xlconcat_0_dout>. This pin will not be connected as a part of interface connection <RGB>.
+regenerate_bd_layout
+connect_bd_net [get_bd_pins vga_ctrl_0/vs] [get_bd_pins rgb2dvi_0/vid_pVSync]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pVSync> is being overridden by the user with net <vga_ctrl_0_vs>. This pin will not be connected as a part of interface connection <RGB>.
+connect_bd_net [get_bd_pins vga_ctrl_0/hs] [get_bd_pins rgb2dvi_0/vid_pHSync]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pHSync> is being overridden by the user with net <vga_ctrl_0_hs>. This pin will not be connected as a part of interface connection <RGB>.
+connect_bd_net [get_bd_pins vga_ctrl_0/vid] [get_bd_pins rgb2dvi_0/vid_pVDE]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pVDE> is being overridden by the user with net <vga_ctrl_0_vid>. This pin will not be connected as a part of interface connection <RGB>.
+regenerate_bd_layout
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0
+endgroup
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+set_property -dict [list CONFIG.Memory_Type {Single_Port_ROM} CONFIG.Enable_32bit_Address {false} CONFIG.Use_Byte_Write_Enable {false} CONFIG.Byte_Size {9} CONFIG.Write_Width_A {16} CONFIG.Write_Depth_A {4096} CONFIG.Read_Width_A {16} CONFIG.Write_Width_B {16} CONFIG.Read_Width_B {16} CONFIG.Register_PortA_Output_of_Memory_Primitives {false} CONFIG.Load_Init_File {false} CONFIG.Use_RSTA_Pin {false} CONFIG.Port_A_Write_Rate {0} CONFIG.use_bram_block {Stand_Alone} CONFIG.EN_SAFETY_CKT {false}] [get_bd_cells blk_mem_gen_0]
+connect_bd_net [get_bd_ports clk] [get_bd_pins blk_mem_gen_0/clka]
+WARNING: [BD 41-1306] The connection to interface pin </blk_mem_gen_0/clka> is being overridden by the user with net </clk_0_1>. This pin will not be connected as a part of interface connection <BRAM_PORTA>.
+connect_bd_net [get_bd_pins vga_ctrl_0/hcount] [get_bd_pins pixel_pusher_0/hcount]
+connect_bd_net [get_bd_pins pixel_pusher_0/vid] [get_bd_pins vga_ctrl_0/vid]
+connect_bd_net [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins pixel_pusher_0/pixel]
+WARNING: [BD 41-1306] The connection to interface pin </blk_mem_gen_0/douta> is being overridden by the user with net <blk_mem_gen_0_douta>. This pin will not be connected as a part of interface connection <BRAM_PORTA>.
+connect_bd_net [get_bd_pins pixel_pusher_0/vs] [get_bd_pins vga_ctrl_0/vs]
+connect_bd_net [get_bd_pins pixel_pusher_0/clk_enable] [get_bd_pins clock_div_25_0/div]
+connect_bd_net [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins pixel_pusher_0/addr]
+WARNING: [BD 41-1306] The connection to interface pin </blk_mem_gen_0/addra> is being overridden by the user with net <pixel_pusher_0_addr>. This pin will not be connected as a part of interface connection <BRAM_PORTA>.
+connect_bd_net [get_bd_pins blk_mem_gen_0/ena] [get_bd_pins clock_div_25_0/div]
+WARNING: [BD 41-1306] The connection to interface pin </blk_mem_gen_0/ena> is being overridden by the user with net </clock_div_25_0_div>. This pin will not be connected as a part of interface connection <BRAM_PORTA>.
+startgroup
+make_bd_pins_external  [get_bd_pins rgb2dvi_0/TMDS_Clk_n] [get_bd_pins rgb2dvi_0/TMDS_Data_p] [get_bd_pins rgb2dvi_0/TMDS_Clk_p] [get_bd_pins rgb2dvi_0/TMDS_Data_n]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Clk_n> is being overridden by the user with net <rgb2dvi_0_TMDS_Clk_n>. This pin will not be connected as a part of interface connection <TMDS>.
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Data_p> is being overridden by the user with net <rgb2dvi_0_TMDS_Data_p>. This pin will not be connected as a part of interface connection <TMDS>.
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Clk_p> is being overridden by the user with net <rgb2dvi_0_TMDS_Clk_p>. This pin will not be connected as a part of interface connection <TMDS>.
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Data_n> is being overridden by the user with net <rgb2dvi_0_TMDS_Data_n>. This pin will not be connected as a part of interface connection <TMDS>.
+endgroup
+set_property name clk_p [get_bd_ports TMDS_Clk_p_0]
+set_property name clk_n [get_bd_ports TMDS_Clk_n_0]
+set_property name data_p [get_bd_ports TMDS_Data_p_0]
+set_property name data_n [get_bd_ports TMDS_Data_n_0]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+INFO: [IP_Flow 19-3484] Absolute path of file 'c:/Users/keyur/Documents/Vivado/HDMI_tester/pic.coe' provided. It will be converted relative to IP Instance files '../../../../../../HDMI_tester/pic.coe'
+startgroup
+set_property -dict [list CONFIG.Load_Init_File {true} CONFIG.Coe_File {C:/Users/keyur/Documents/Vivado/HDMI_tester/pic.coe}] [get_bd_cells blk_mem_gen_0]
+INFO: [IP_Flow 19-3484] Absolute path of file 'c:/Users/keyur/Documents/Vivado/HDMI_tester/pic.coe' provided. It will be converted relative to IP Instance files '../../../../../../pic.coe'
+endgroup
+set_property name picture [get_bd_cells blk_mem_gen_0]
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+startgroup
+set_property -dict [list CONFIG.Enable_A {Always_Enabled}] [get_bd_cells picture]
+WARNING: [BD 41-1684] Pin /picture/ena is now disabled. All connections to this pin have been removed. 
+endgroup
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+regenerate_bd_layout
+create_bd_port -dir O hdmi_tx_hpd
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1
+endgroup
+connect_bd_net [get_bd_ports hdmi_tx_hpd] [get_bd_pins xlconstant_1/dout]
+regenerate_bd_layout
+save_bd_design
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+Wrote  : <C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/bd/HDMI_Tester/ui/bd_17274f06.ui> 
+file mkdir C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/constrs_1
+file mkdir C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/constrs_1/new
+close [ open C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/constrs_1/new/Zybo-Z710.xdc w ]
+add_files -fileset constrs_1 C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/constrs_1/new/Zybo-Z710.xdc
+make_wrapper -files [get_files C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/bd/HDMI_Tester/HDMI_Tester.bd] -top
+WARNING: [BD 41-2180] Resetting the memory initialization file of </picture> to default.
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/synth/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/sim/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hdl/HDMI_Tester_wrapper.vhd
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/keyur/Documents/Vivado/vivado-library-master'.
+make_wrapper: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 1515.242 ; gain = 126.621
+add_files -norecurse c:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hdl/HDMI_Tester_wrapper.vhd
+update_compile_order -fileset sources_1
+set_property top HDMI_Tester_wrapper [current_fileset]
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+INFO: [BD 41-1662] The design 'HDMI_Tester.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+Wrote  : <C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/bd/HDMI_Tester/ui/bd_17274f06.ui> 
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/synth/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/sim/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hdl/HDMI_Tester_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clock_div_25_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block pixel_pusher_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vga_ctrl_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rgb2dvi_0 .
+WARNING: [IP_Flow 19-5160] IP 'HDMI_Tester_xlconstant_0_0' detected simulation language mismatch. Simulation type 'rtl' does not support 'VHDL' outputs (see project's "simulator_language" property), delivering 'Verilog' outputs instead.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconstant_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconcat_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block picture .
+WARNING: [IP_Flow 19-5160] IP 'HDMI_Tester_xlconstant_1_0' detected simulation language mismatch. Simulation type 'rtl' does not support 'VHDL' outputs (see project's "simulator_language" property), delivering 'Verilog' outputs instead.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconstant_1 .
+Exporting to file C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hw_handoff/HDMI_Tester.hwh
+Generated Block Design Tcl file C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hw_handoff/HDMI_Tester_bd.tcl
+Generated Hardware Definition File C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/synth/HDMI_Tester.hwdef
+[Thu Sep 26 19:09:06 2024] Launched HDMI_Tester_rgb2dvi_0_0_synth_1, HDMI_Tester_blk_mem_gen_0_0_synth_1, HDMI_Tester_clock_div_25_0_0_synth_1, HDMI_Tester_pixel_pusher_0_0_synth_1, HDMI_Tester_vga_ctrl_0_0_synth_1, synth_1...
+Run output will be captured here:
+HDMI_Tester_rgb2dvi_0_0_synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/HDMI_Tester_rgb2dvi_0_0_synth_1/runme.log
+HDMI_Tester_blk_mem_gen_0_0_synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/HDMI_Tester_blk_mem_gen_0_0_synth_1/runme.log
+HDMI_Tester_clock_div_25_0_0_synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/HDMI_Tester_clock_div_25_0_0_synth_1/runme.log
+HDMI_Tester_pixel_pusher_0_0_synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/HDMI_Tester_pixel_pusher_0_0_synth_1/runme.log
+HDMI_Tester_vga_ctrl_0_0_synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/HDMI_Tester_vga_ctrl_0_0_synth_1/runme.log
+synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/synth_1/runme.log
+[Thu Sep 26 19:09:06 2024] Launched impl_1...
+Run output will be captured here: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 1519.988 ; gain = 4.746
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z010iclg225-1L
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1558.801 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2021.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 2185.332 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 2185.332 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2185.332 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 2334.113 ; gain = 794.352
+close_design
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+INFO: [IP_Flow 19-3484] Absolute path of file 'c:/Users/keyur/Documents/Vivado/HDMI_tester/pic.coe' provided. It will be converted relative to IP Instance files '../../../../../../HDMI_tester/pic.coe'
+startgroup
+set_property -dict [list CONFIG.Coe_File {C:/Users/keyur/Documents/Vivado/HDMI_tester/pic.coe}] [get_bd_cells picture]
+INFO: [IP_Flow 19-3484] Absolute path of file 'c:/Users/keyur/Documents/Vivado/HDMI_tester/pic.coe' provided. It will be converted relative to IP Instance files '../../../../../../pic.coe'
+endgroup
+save_bd_design
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+Wrote  : <C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/bd/HDMI_Tester/ui/bd_17274f06.ui> 
+reset_run synth_1
+reset_run HDMI_Tester_blk_mem_gen_0_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/synth/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/sim/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hdl/HDMI_Tester_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block picture .
+Exporting to file C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hw_handoff/HDMI_Tester.hwh
+Generated Block Design Tcl file C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hw_handoff/HDMI_Tester_bd.tcl
+Generated Hardware Definition File C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/synth/HDMI_Tester.hwdef
+[Thu Sep 26 19:22:49 2024] Launched HDMI_Tester_blk_mem_gen_0_0_synth_1, synth_1...
+Run output will be captured here:
+HDMI_Tester_blk_mem_gen_0_0_synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/HDMI_Tester_blk_mem_gen_0_0_synth_1/runme.log
+synth_1: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/synth_1/runme.log
+[Thu Sep 26 19:22:49 2024] Launched impl_1...
+Run output will be captured here: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 2398.754 ; gain = 0.000
+get_ports
+ERROR: [Common 17-53] User Exception: No open design. Please open an elaborated, synthesized or implemented design before executing this command.
+open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2398.754 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2021.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 2398.754 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 2398.754 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2398.754 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+get_ports
+clk clk_n clk_p data_n[0] data_n[1] data_n[2] data_p[0] data_p[1] data_p[2] hdmi_tx_hpd[0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Thu Sep 26 19:32:47 2024] Launched synth_1...
+Run output will be captured here: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/synth_1/runme.log
+[Thu Sep 26 19:32:47 2024] Launched impl_1...
+Run output will be captured here: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/impl_1/runme.log
+close_design
+delete_bd_objs [get_bd_nets xlconcat_0_dout] [get_bd_nets rgb2dvi_0_TMDS_Clk_p] [get_bd_nets rgb2dvi_0_TMDS_Clk_n] [get_bd_nets rgb2dvi_0_TMDS_Data_p] [get_bd_nets rgb2dvi_0_TMDS_Data_n] [get_bd_nets xlconstant_0_dout] [get_bd_nets vga_ctrl_0_hs] [get_bd_cells rgb2dvi_0]
+delete_bd_objs [get_bd_ports data_n]
+delete_bd_objs [get_bd_ports data_p]
+delete_bd_objs [get_bd_ports clk_n]
+delete_bd_objs [get_bd_ports clk_p]
+startgroup
+create_bd_cell -type ip -vlnv digilentinc.com:ip:rgb2dvi:1.4 rgb2dvi_0
+endgroup
+set_property -dict [list CONFIG.kRstActiveHigh {true} CONFIG.kGenerateSerialClk {false}] [get_bd_cells rgb2dvi_0]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins rgb2dvi_0/aRst] [get_bd_pins xlconstant_0/dout]
+connect_bd_net [get_bd_ports clk] [get_bd_pins rgb2dvi_0/SerialClk]
+connect_bd_net [get_bd_pins rgb2dvi_0/PixelClk] [get_bd_pins clock_div_25_0/div]
+startgroup
+make_bd_pins_external  [get_bd_pins rgb2dvi_0/TMDS_Clk_p]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Clk_p> is being overridden by the user with net <rgb2dvi_0_TMDS_Clk_p>. This pin will not be connected as a part of interface connection <TMDS>.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins rgb2dvi_0/TMDS_Clk_n]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Clk_n> is being overridden by the user with net <rgb2dvi_0_TMDS_Clk_n>. This pin will not be connected as a part of interface connection <TMDS>.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins rgb2dvi_0/TMDS_Data_p]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Data_p> is being overridden by the user with net <rgb2dvi_0_TMDS_Data_p>. This pin will not be connected as a part of interface connection <TMDS>.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins rgb2dvi_0/TMDS_Data_n]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/TMDS_Data_n> is being overridden by the user with net <rgb2dvi_0_TMDS_Data_n>. This pin will not be connected as a part of interface connection <TMDS>.
+endgroup
+regenerate_bd_layout
+validate_bd_design
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/rgb2dvi_0/vid_pData
+/rgb2dvi_0/vid_pVDE
+/rgb2dvi_0/vid_pHSync
+/rgb2dvi_0/vid_pVSync
+
+connect_bd_net [get_bd_pins rgb2dvi_0/vid_pData] [get_bd_pins vga_ctrl_0/vid]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pData> is being overridden by the user with net </vga_ctrl_0_vid>. This pin will not be connected as a part of interface connection <RGB>.
+connect_bd_net [get_bd_pins rgb2dvi_0/vid_pHSync] [get_bd_pins vga_ctrl_0/hs]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pHSync> is being overridden by the user with net <vga_ctrl_0_hs>. This pin will not be connected as a part of interface connection <RGB>.
+connect_bd_net [get_bd_pins rgb2dvi_0/vid_pVSync] [get_bd_pins vga_ctrl_0/vs]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pVSync> is being overridden by the user with net </vga_ctrl_0_vs>. This pin will not be connected as a part of interface connection <RGB>.
+connect_bd_net [get_bd_pins rgb2dvi_0/vid_pVDE] [get_bd_pins vga_ctrl_0/vid]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pVDE> is being overridden by the user with net </vga_ctrl_0_vid>. This pin will not be connected as a part of interface connection <RGB>.
+delete_bd_objs [get_bd_nets vga_ctrl_0_vid]
+connect_bd_net [get_bd_pins rgb2dvi_0/vid_pData] [get_bd_pins xlconcat_0/dout]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pData> is being overridden by the user with net <xlconcat_0_dout>. This pin will not be connected as a part of interface connection <RGB>.
+connect_bd_net [get_bd_pins rgb2dvi_0/vid_pVDE] [get_bd_pins vga_ctrl_0/vid]
+WARNING: [BD 41-1306] The connection to interface pin </rgb2dvi_0/vid_pVDE> is being overridden by the user with net <vga_ctrl_0_vid>. This pin will not be connected as a part of interface connection <RGB>.
+regenerate_bd_layout
+validate_bd_design
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/pixel_pusher_0/vid
+
+connect_bd_net [get_bd_pins pixel_pusher_0/vid] [get_bd_pins vga_ctrl_0/vid]
+regenerate_bd_layout
+regenerate_bd_layout -routing
+validate_bd_design
+set_property name clk_p [get_bd_ports TMDS_Clk_p_0]
+set_property name clk_n [get_bd_ports TMDS_Clk_n_0]
+set_property name data_p [get_bd_ports TMDS_Data_p_0]
+set_property name data_n [get_bd_ports TMDS_Data_n_0]
+save_bd_design
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+Wrote  : <C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.srcs/sources_1/bd/HDMI_Tester/ui/bd_17274f06.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : <C:\Users\keyur\Documents\Vivado\HDMI_tester\HDMI_tester.srcs\sources_1\bd\HDMI_Tester\HDMI_Tester.bd> 
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/synth/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/sim/HDMI_Tester.vhd
+VHDL Output written to : C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hdl/HDMI_Tester_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rgb2dvi_0 .
+Exporting to file C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hw_handoff/HDMI_Tester.hwh
+Generated Block Design Tcl file C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/hw_handoff/HDMI_Tester_bd.tcl
+Generated Hardware Definition File C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.gen/sources_1/bd/HDMI_Tester/synth/HDMI_Tester.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP HDMI_Tester_rgb2dvi_0_1, cache-ID = 4985260b1059c294; cache size = 0.873 MB.
+[Thu Sep 26 19:38:36 2024] Launched synth_1...
+Run output will be captured here: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/synth_1/runme.log
+[Thu Sep 26 19:38:36 2024] Launched impl_1...
+Run output will be captured here: C:/Users/keyur/Documents/Vivado/HDMI_tester/HDMI_tester.runs/impl_1/runme.log
+regenerate_bd_layout
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Sep 26 19:43:48 2024...

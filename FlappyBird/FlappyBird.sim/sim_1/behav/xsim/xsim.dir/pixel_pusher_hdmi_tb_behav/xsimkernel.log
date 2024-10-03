@@ -1,0 +1,7 @@
+Running: xsim.dir/pixel_pusher_hdmi_tb_behav/xsimk.exe -simmode gui -wdb pixel_pusher_hdmi_tb_behav.wdb -simrunnum 0 -socket 60128
+Design successfully loaded
+Design Loading Memory Usage: 7300 KB (Peak: 7300 KB)
+Design Loading CPU Usage: 31 ms
+Simulation completed
+Simulation Memory Usage: 15824 KB (Peak: 15824 KB)
+Simulation CPU Usage: 13858 ms

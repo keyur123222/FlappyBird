@@ -1,0 +1,127 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Mon May  6 12:21:40 2024
+| Host         : Key running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file FlappyBird_top_control_sets_placed.rpt
+| Design       : FlappyBird_top
+| Device       : xc7z010
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    49 |
+|    Minimum number of control sets                        |    49 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   222 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    49 |
+| >= 0 to < 4        |     8 |
+| >= 4 to < 6        |     6 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |    13 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    17 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             154 |          104 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              56 |           24 |
+| Yes          | No                    | No                     |             194 |           68 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             302 |          106 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------+-----------------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
+|   Clock Signal   |              Enable Signal              |                       Set/Reset Signal                      | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+-----------------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG   | u11/div_9600                            | u3/uart_rst_signal                                          |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG   | u1/div_out_BUFG                         |                                                             |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG   | u3/led_ind_i_1_n_0                      |                                                             |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG   | u4/hcounter                             |                                                             |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG   | u3/internal_addr2                       | u3/internal_addr2[10]_i_1_n_0                               |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG   | u3/internal_addr5                       | u3/internal_addr5[10]_i_1_n_0                               |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG   | u3/internal_addr4                       | u3/internal_addr4[10]_i_1_n_0                               |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG   | u3/internal_addr3                       | u3/internal_addr3[10]_i_1_n_0                               |                2 |              2 |         1.00 |
+|  clk_IBUF_BUFG   | u3/pipeGenCounter                       |                                                             |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG   | u3/speedIncrement[3]_i_1_n_0            |                                                             |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG   | u12/FSM_onehot_current_state[3]_i_1_n_0 | u3/uart_rst_signal                                          |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG   | u13/testCounter[4]_i_1_n_0              | u3/uart_rst_reg_0                                           |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG   | u3/h2                                   | u3/h1[10]_i_1_n_0                                           |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG   | u3/h2                                   | u3/h1[9]_i_1_n_0                                            |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG   | u11/div_reg_0[0]                        | u3/uart_rst_reg_0                                           |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG   | u4/E[0]                                 |                                                             |                8 |              8 |         1.00 |
+|  clk_IBUF_BUFG   | u13/NETID[6][7]_i_1_n_0                 | u3/uart_rst_reg_0                                           |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG   | u13/NETID[7][7]_i_1_n_0                 | u3/uart_rst_reg_0                                           |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG   | u13/char[7]_i_1_n_0                     | u3/uart_rst_reg_0                                           |                5 |              8 |         1.60 |
+|  clk_IBUF_BUFG   | u11/E[0]                                | u3/uart_rst_signal                                          |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG   | u3/y1                                   | u3/y2[8]_i_1_n_0                                            |                4 |              9 |         2.25 |
+|  clk_IBUF_BUFG   | u3/y1                                   | u3/y2[7]_i_1_n_0                                            |                5 |              9 |         1.80 |
+|  clk_IBUF_BUFG   | u1/div_out_BUFG                         | u4/hcounter                                                 |                5 |              9 |         1.80 |
+|  clk_IBUF_BUFG   | u3/internal_addr5                       |                                                             |                3 |              9 |         3.00 |
+|  clk_IBUF_BUFG   | u3/internal_addr2                       |                                                             |                2 |              9 |         4.50 |
+|  clk_IBUF_BUFG   | u3/internal_addr3                       |                                                             |                4 |              9 |         2.25 |
+|  clk_IBUF_BUFG   | u4/hcounter                             | u4/vcounter                                                 |                5 |              9 |         1.80 |
+|  clk_IBUF_BUFG   | u3/internal_addr4                       |                                                             |                2 |              9 |         4.50 |
+|  u1/div_out_BUFG |                                         | u5/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1__1_n_0 |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG   | u3/h2                                   |                                                             |                7 |             11 |         1.57 |
+|  clk_IBUF_BUFG   | u4/internal_addr6                       |                                                             |                3 |             12 |         4.00 |
+|  clk_IBUF_BUFG   |                                         | u11/clear                                                   |                4 |             14 |         3.50 |
+|  clk_IBUF_BUFG   | u1/tempy1                               |                                                             |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG   | u4/internal_addr                        | u4/FSM_onehot_currentState_reg[1]_1                         |                4 |             18 |         4.50 |
+|  clk_IBUF_BUFG   | u3/uart_en_reg_0[0]                     | u3/uart_rst_reg_0                                           |                8 |             19 |         2.38 |
+|  clk_IBUF_BUFG   | diff_btn/counter                        | diff_btn/counter[21]_i_1__0_n_0                             |                6 |             21 |         3.50 |
+|  clk_IBUF_BUFG   | jmp_btn/counter                         | jmp_btn/counter[21]_i_1_n_0                                 |                6 |             21 |         3.50 |
+|  clk_IBUF_BUFG   | start_btn/counter                       | start_btn/counter[21]_i_1_n_0                               |                6 |             21 |         3.50 |
+|  clk_IBUF_BUFG   | skin_btn/counter                        | skin_btn/counter[21]_i_1_n_0                                |                6 |             21 |         3.50 |
+|  clk_IBUF_BUFG   | u1/tempy1                               | u3/pipeMoveTimer[23]_i_1_n_0                                |                6 |             24 |         4.00 |
+|  clk_IBUF_BUFG   | u3/btn1[0]_i_1_n_0                      |                                                             |                7 |             25 |         3.57 |
+|  clk_IBUF_BUFG   | u3/btn2[0]_i_1_n_0                      |                                                             |                7 |             25 |         3.57 |
+|  clk_IBUF_BUFG   | diff_btn/counter_reg[0]_1               |                                                             |                7 |             25 |         3.57 |
+|  clk_IBUF_BUFG   | skin_btn/counter_reg[0]_1               |                                                             |                7 |             25 |         3.57 |
+|  clk_IBUF_BUFG   | u3/tempCounter                          | u3/tempCounter[26]_i_1_n_0                                  |                8 |             27 |         3.38 |
+|  clk_IBUF_BUFG   | u3/timer[26]_i_2_n_0                    | u3/timer[26]_i_1_n_0                                        |                8 |             27 |         3.38 |
+|  u1/div_out_BUFG |                                         | u5/U0/DataEncoders[0].DataEncoder/SR[0]                     |               17 |             32 |         1.88 |
+|  u1/div_out_BUFG |                                         |                                                             |               29 |             49 |         1.69 |
+|  clk_IBUF_BUFG   |                                         |                                                             |               75 |            105 |         1.40 |
++------------------+-----------------------------------------+-------------------------------------------------------------+------------------+----------------+--------------+
+
+

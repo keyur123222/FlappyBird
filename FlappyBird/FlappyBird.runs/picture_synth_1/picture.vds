@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon May  6 12:19:55 2024
+# Process ID: 20500
+# Current directory: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1
+# Command line: vivado.exe -log picture.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source picture.tcl
+# Log file: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture.vds
+# Journal file: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1\vivado.jou
+# Running On: Key, OS: Windows, CPU Frequency: 3686 MHz, CPU Physical cores: 10, Host memory: 16908 MB
+#-----------------------------------------------------------
+source picture.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository 'c:/Users/keyur/Documents/Vivado/FlappyBird/vivado-library-master'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/keyur/Documents/Vivado/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: picture
+INFO: [IP_Flow 19-6922] IPCACHE: Exporting cached entry e655c176409db92f to dir: C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/ip/2023.2/e/6/e655c176409db92f/picture.dcp to C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture.dcp.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/ip/2023.2/e/6/e655c176409db92f/picture_sim_netlist.v to C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture_sim_netlist.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/ip/2023.2/e/6/e655c176409db92f/picture_sim_netlist.vhdl to C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture_sim_netlist.vhdl.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/ip/2023.2/e/6/e655c176409db92f/picture_stub.v to C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture_stub.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.cache/ip/2023.2/e/6/e655c176409db92f/picture_stub.vhdl to C:/Users/keyur/Documents/Vivado/FlappyBird/FlappyBird/FlappyBird.runs/picture_synth_1/picture_stub.vhdl.
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP picture, cache-ID = e655c176409db92f.
+INFO: [Common 17-206] Exiting Vivado at Mon May  6 12:20:05 2024...
