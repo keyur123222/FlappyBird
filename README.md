@@ -1,3 +1,6 @@
+### Demonstration
+https://www.youtube.com/watch?v=V33g31IxaMQ
+
 ## Flappy Bird on Zybo Z7 FPGA Board
 This project is a fully functional Flappy Bird game developed on the Zybo Z7 FPGA Board using VHDL. The game includes designing and implementing the game logic, graphics, and controls from scratch.
 
@@ -29,5 +32,4 @@ This project is a fully functional Flappy Bird game developed on the Zybo Z7 FPG
 3. The game starts in the ‘start’ state. Press the button to begin playing.
 4. Avoid obstacles and keep the bird flying to score points.
 
-### Demonstration
-https://www.youtube.com/watch?v=V33g31IxaMQ
+
